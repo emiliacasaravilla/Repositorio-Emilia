@@ -11,7 +11,7 @@ function camposLlenos (){
 
 
 function validarRegistro (){
-    if (camposLlenos){window.location.href = "index.html"};
+    if (camposLlenos){window.location.href = "principal.html"};
 };
 
-let ingresar = document.getElementById("ingresar").addEventListener("click", validarRegistro ());
+document.getElementById("ingresar").addEventListener("click", validarRegistro ());
