@@ -1,5 +1,5 @@
 
-function showProductList(){
+/*function showProductList(){
 
     let htmlContentToAppend = "";
     for(let i = 0; i < currentCategoriesArray.length; i++){
@@ -27,17 +27,28 @@ function showProductList(){
         }
 
         document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
-    }};
+    }}; */
 
 
-let productos = [];
+  // pienso que esta bien lo de aca abajo, sin embargo en el console log me dice que el array esta vacio
 
-document.addEventListener("DOMContentLoaded", function(){
-getJSONData("https://japceibal.github.io/emercado-api/cats_products/101.json").then(function(resultado){
+let arrayProductos = [];
+
+document.addEventListener("DOMContentLoaded", function(e){
+getJSONData(PRODUCTS_URL).then(function(resultado){
     if (resultado.status === "ok"){
-        productos = resultado.data.products
+        arrayProductos = resultado.data.products
+      mostrarProductos() 
     } else {
         alert ('Ha ocurrido un error al cargar los productos.');
     }
 
 })});
+
+console.log (arrayProductos);
+
+function mostrarProductos(){
+    alert (arrayProductos.name)
+}
+
+// esta funcion fue solo para probar, pero sigue sin funcionar
