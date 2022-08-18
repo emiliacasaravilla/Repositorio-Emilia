@@ -1,17 +1,19 @@
-
-let email = document.getElementById("email")
-let contra = document.getElementById("contra")
-
-function camposLlenos (){
-    if ((email.value.length > 0) && (contra.value.length > 0)){
-        return true
-    } else{
-        return false}
-    }
+let email = document.getElementById("email").value;
+let contra = document.getElementById("contra").value;
 
 
-function validarRegistro (){
-    if (camposLlenos){window.location.href = "principal.html"};
-};
 
-document.getElementById("ingresar").addEventListener("click", validarRegistro ());
+  document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("ingresar").addEventListener("click", validarEnvio ())
+
+  };
+
+
+  function validarEnvio (){
+    if ((email.length > 0) && (contra.length > 0)) {window.location.href = "principal.html"}
+  }
+ 
+
+
+
+
