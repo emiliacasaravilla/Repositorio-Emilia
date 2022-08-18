@@ -1,18 +1,26 @@
-let email = document.getElementById("email").value;
-let contra = document.getElementById("contra").value;
+let email = document.getElementById("email");
+let contra = document.getElementById("contra");
 
 
 
-  document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("ingresar").addEventListener("click", validarEnvio ())
-
-  };
-
-
-  function validarEnvio (){
-    if ((email.length > 0) && (contra.length > 0)) {window.location.href = "principal.html"}
+function camposLlenos(){
+  if ((email.value.length > 0) && (contra.value.length > 0)){
+      return true
+  } else {
+      return false
   }
- 
+};
+
+
+  let redirigir = document.getElementById("ingresar").addEventListener("click", function () {
+    if (camposLlenos()) { 
+      window.location.href = "principal.html" 
+    } else{
+      alert ('Debe escribir su email y contraseña!')
+    }
+});
+
+
 
 
 
