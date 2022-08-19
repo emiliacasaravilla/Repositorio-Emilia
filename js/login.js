@@ -6,10 +6,10 @@ let contra = document.getElementById("contra");
 function camposLlenos(){
   if ((email.value.length > 0) && (contra.value.length > 0)){
       return true
-  } else {
-      return false
-  }
+  } 
 };
+
+// otras formas de explicar la condicion de campos llenos:      email.value!==0   o  email.validity.valid
 
 
   let redirigir = document.getElementById("ingresar").addEventListener("click", function () {
