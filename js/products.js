@@ -30,8 +30,10 @@ function mostrarProductos(){
 
 let arrayProductos = [];
 
+
 document.addEventListener("DOMContentLoaded", function(e){
-getJSONData(PRODUCTS_URL).then(function(resultado){
+getJSONData(PRODUCTS_URL + localStorage.getItem('catID') + ".json").then(function(resultado){
+ 
     if (resultado.status === "ok"){
         arrayProductos = resultado.data.products;
       mostrarProductos();
@@ -39,3 +41,8 @@ getJSONData(PRODUCTS_URL).then(function(resultado){
     }
 })});
 
+
+//concatenando strigns en este fetch que había armado patra la enteega 1 le agregue la informacion 
+//para que cargue los productos de acuerdo a la categoria que elija el usuario
+//partiendo el url base que estaba seteando en init, le concatene mediante get al local storage 
+//el catID  y despues le agregue el .jason como string
