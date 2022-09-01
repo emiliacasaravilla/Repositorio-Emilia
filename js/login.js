@@ -9,15 +9,19 @@ function camposLlenos(){
   } 
 };
 
-// otras formas de explicar la condicion de campos llenos:      email.value!==0   o  email.validity.valid
+//otras formas de explicar la condicion de campos llenos:  email.value!==0   o  email.validity.valid
 
 
 
-// esto es medio cualqui pero lo dejo para seguir pensando luego
+//aca creo la funcion que guarda la info en el almacenamiento local
+
+
 function guardarNombreDeUsuario (){
   localStorage.setItem('nombreUsuario', email.value);
 }
 
+
+//mas abajo, antes de redirigir, invoco la funcion
 
   let redirigir = document.getElementById("ingresar").addEventListener("click", function () {
     if (camposLlenos()) { 
