@@ -1,11 +1,66 @@
 
-
-
 let arrayProductos = [];
 let precioMin = undefined;
 let precioMax = undefined;
-
 //declaré las variables de precio minimo y maximo, y las deje indefinidas, ya que son las que el usuario va a llenar
+
+
+
+//const ordenarPorPrecioDesc = "ZA";
+//const ordenarPorPrecioAsc = "AZ";
+//const ordenarPorRelevanciaDesc = "Cant.";
+
+//var arr = [ 40, 1, 5, 200 ];
+//function comparar ( a, b ){ return a - b; }
+//arr.sort( comparar );  // [ 1, 5, 40, 200 ]
+
+
+//numeros.sort(function(a, b){return a - b});
+
+
+
+//function criterioPrecioDesc ( a, b ){ 
+ //   return b - a 
+//};
+
+//function criterioPrecioAsc ( a, b ){ 
+   // return a - b 
+//};
+
+//function ordenarPorPrecioDesc (arrayProductos){
+//arrayProductos.sort(criterioPrecioDesc ( a , b )); 
+//};
+
+function sortCategories(criteria, array){
+    let result = [];
+    if (criteria === ordenarPorPrecioAsc )
+    {
+        result = array.sort(function(a, b) {
+            if ( a.cost < b.cost ){ return -1; }
+            if ( a.cost > b.cost ){ return 1; }
+            return 0;
+        });
+    }else if (criteria === ordenarPorPrecioDesc){
+        result = array.sort(function(a, b) {
+            if ( a.cost > b.cost ){ return -1; }
+            if ( a.cost < b.cost ){ return 1; }
+            return 0;
+        });
+    }else if (criteria === ordenarPorRelevanciaDesc){
+        result = array.sort(function(a, b) {
+            let aCount = parseInt(a.soldCount);
+            let bCount = parseInt(b.soldCount);
+
+            if ( aCount > bsoldCount ){ return -1; }
+            if ( aCount < bsoldCount ){ return 1; }
+            return 0;
+        });
+    }
+
+    return result;
+}
+
+
 
 
 function mostrarProductos(arrayProductos){
@@ -68,11 +123,54 @@ document.addEventListener("DOMContentLoaded", function(e){
             precioMin = document.getElementById("rangeFilterCountMin").value;
             precioMax = document.getElementById("rangeFilterCountMax").value;
             mostrarProductos(arrayProductos);           
-            })   
+            }) 
+
+//Le agregué a la lactura del DOM una escucha de evento para el botón FILTRO, que recoge el valor de precio minimo y maximo que puso el usuario
+//y ejecuta la función mostrarProductos, definida más arriba
+
+
+        document.getElementById("clearRangeFilter").addEventListener('click', function () {
+
+            document.getElementById("rangeFilterCountMin").value = "";
+            document.getElementById("rangeFilterCountMax").value = "";         
+                
+           precioMin = undefined;
+           precioMax = undefined;
+        
+           mostrarProductos(arrayProductos);
+
+//Le agregué una escucha de evento para el botón LIMPIAR que borra los precios que puso el usuario en los casilleros 
+//vuelve a poner undefined las variables de precio minimo y maximo y vuelve a ejecutar la funcion de mostrar
+//productos, que al estar las variables indefinidas, muestra todos los productos de vuelta
+                
+
+document.getElementById("sortAsc").addEventListener("click", function(){
+    sortAndShowCategories(ordenarPorPrecioAsc);
+});
+
+document.getElementById("sortDesc").addEventListener("click", function(){
+    sortAndShowCategories(ordenarPorPrecioDesc);
+});
+
+document.getElementById("sortByCount").addEventListener("click", function(){
+    sortAndShowCategories(ordenarPorRelevanciaDesc);
+});
+
+
+
+    //document.getElementById("sortDesc").addEventListener('click', function () {
+
+       // ordenarPorPrecioDesc (arrayProductos);
+       // mostrarProductos(arrayProductos);
+//alert('jol');
+
+         //   });
+ 
+                })        
+
+
     })});
 
-//Le agregué a la lactura de DOM una escucha de evento para el botón FILTRO, que recoge el valor de precio minimo y maximo que puso el usuario
-//y ejecuta la función mostrarProductos, definida más arriba
 
 
 
