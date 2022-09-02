@@ -41,6 +41,8 @@ let getJSONData = function(url){
     });
 }
 
+
+
 function ponerNombreUsuario (){
    let htmlContentToAppend = localStorage.getItem('nombreUsuario');
   document.getElementById("nombreDeUsuario").innerHTML = htmlContentToAppend;
@@ -48,9 +50,8 @@ function ponerNombreUsuario (){
 
 ponerNombreUsuario();
 
-//cree la funcion que a traves del getitem accede a la info guardada en el alacenamiento local
-//agregue esa info (el mail) con en el espacio que ya estaba creado en todos los html
-//(lo que els tuve que agregar fue un id iguala a todos> nombreDeUsuario)
-// lo hice desde init porque es un archivo que esta anexado a todos los html, asi esa info aparece en todas 
-//las ventanas del sitio
-//invoque la funcion
+//Creé la función que a través del getitem accede a la info guardada en el alacenamiento local
+//Agregué esa info (el mail) con en el espacio que ya estaba creado en todos los html
+//(lo que les tuve que agregar fue un id igual a todos: nombreDeUsuario)
+//Lo hice desde init porque es un archivo que esta anexado a todos los html, así esa info aparece en todas las ventanas del sitio
+//Luego invoqué la funcion 
