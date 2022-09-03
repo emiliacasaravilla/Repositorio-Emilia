@@ -50,12 +50,14 @@ function mostrarProductos(){
 
     let htmlContentToAppend = "";
  
-//A la función que muestra los productos, creada para la entrega 1, le agregué las funcionalidades para que recorra con un FOR
-//el array de productos que ya tenía y con un condicional que vaya chequeando las diferentes opciones: 
+//A la función que muestra los productos, creada para la entrega 1, le agregué las funcionalidades para 
+//que recorra con un FOR el array de productos que ya tenía y con un condicional que vaya chequeando las 
+//diferentes opciones para ser ejecutada: 
 // 1) si los precios no están definidos
-// 2) si los rangos de max y min están definidos
+// 2) si los rangos de max y min están definidos ambos
 // 3 y 4) o si uno está definido y el otro no
-// En cualquiera de los casos la función muestra productos, pero solo muestra los que entren en el rango (cuando sea llamada, más abajo)
+// En cualquiera de los casos la función muestra productos, pero solo muestra los que entren en el rango 
+//(cuando sea llamada, más abajo)
 
    for (let productos of arrayProductos){
 
@@ -106,11 +108,11 @@ function sortYMostrarProductos(sortCriterio, arrayProductos){
 
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCTS_URL + localStorage.getItem('catID') + ".json").then(function(resultado){
- 
-//Concatenando strigns en este fetch que había armado para la entrega 1, le agregué la información 
-//Para que cargue los productos de acuerdo a la categoria que elija el usuario
-//Partiendo el url base que estaba seteando en init, le concatené mediante get al local storage 
-//El catID  y después le agregué el .jason como string
+
+//Modifiqué la solicitud de carga para que  ahora se pueda acceder a los productos de cualquier categoría
+//Concatenando strigns en este fetch que había armado para la entrega 1, le agregué la información catID
+//que está almacenada en el local storage y la traje con el getItem
+// y después le agregué el .jason como string
         
 
         if (resultado.status === "ok"){
@@ -124,7 +126,8 @@ document.addEventListener("DOMContentLoaded", function(e){
             mostrarProductos();           
             }) ;
 
-//Le agregué a la lactura del DOM una escucha de evento para el botón FILTRO, que recoge el valor de precio minimo y maximo que puso el usuario
+//Le agregué a la solicitud de carga una escucha de evento para el botón FILTRO, 
+//que recoge el valor de precio minimo y maximo que puso el usuario (las variabes para eso fueron declaradas arriba)
 //y ejecuta la función mostrarProductos, definida más arriba
 
 

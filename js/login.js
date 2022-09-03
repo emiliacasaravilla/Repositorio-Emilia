@@ -20,7 +20,8 @@ function guardarNombreDeUsuario (){
 }
 
 
-//Más abajo, antes de redirigir, invoco la función
+//Le agregué a la escucha de venento que al hacer click en ingresar, antes de redirigir, 
+//invoque la función de guardar nombre de usuario
 
   let redirigir = document.getElementById("ingresar").addEventListener("click", function () {
     if (camposLlenos()) { 
