@@ -1,69 +1,51 @@
 
-let arrayProductos = [];
+
 let precioMin = undefined;
 let precioMax = undefined;
 //declaré las variables de precio minimo y maximo, y las deje indefinidas, ya que son las que el usuario va a llenar
 
+let arrayProductos = [];
+let actualProductosArray = [];
+let actualSortCriterio = undefined;
+const ordenarPorPrecioDesc = "precioAs";
+const ordenarPorPrecioAsc = "precioDes";
+const ordenarPorRelevanciaDesc = "Relev";
+
+//declaré las variables: arrays de productos (la original y la qye se va a ir actualizando al hacer el sort) 
+//y por otrolado las que me van ayudar a setear el criterio para el sort
 
 
-//const ordenarPorPrecioDesc = "ZA";
-//const ordenarPorPrecioAsc = "AZ";
-//const ordenarPorRelevanciaDesc = "Cant.";
-
-//var arr = [ 40, 1, 5, 200 ];
-//function comparar ( a, b ){ return a - b; }
-//arr.sort( comparar );  // [ 1, 5, 40, 200 ]
-
-
-//numeros.sort(function(a, b){return a - b});
-
-
-
-//function criterioPrecioDesc ( a, b ){ 
- //   return b - a 
-//};
-
-//function criterioPrecioAsc ( a, b ){ 
-   // return a - b 
-//};
-
-//function ordenarPorPrecioDesc (arrayProductos){
-//arrayProductos.sort(criterioPrecioDesc ( a , b )); 
-//};
-
-function sortCategories(criteria, array){
-    let result = [];
-    if (criteria === ordenarPorPrecioAsc )
+function sortProductos(criterio, array){
+    let resultado = [];
+    if (criterio === ordenarPorPrecioAsc )
     {
-        result = array.sort(function(a, b) {
-            if ( a.cost < b.cost ){ return -1; }
-            if ( a.cost > b.cost ){ return 1; }
-            return 0;
+        resultado = array.sort(function(a, b) {
+            return parseInt(a.cost) - parseInt(b.cost) 
+           
         });
-    }else if (criteria === ordenarPorPrecioDesc){
-        result = array.sort(function(a, b) {
-            if ( a.cost > b.cost ){ return -1; }
-            if ( a.cost < b.cost ){ return 1; }
-            return 0;
+    }else if (criterio === ordenarPorPrecioDesc){
+        resultado = array.sort(function(a, b) {
+            return parseInt(b.cost) - parseInt(a.cost) 
         });
-    }else if (criteria === ordenarPorRelevanciaDesc){
-        result = array.sort(function(a, b) {
-            let aCount = parseInt(a.soldCount);
-            let bCount = parseInt(b.soldCount);
-
-            if ( aCount > bsoldCount ){ return -1; }
-            if ( aCount < bsoldCount ){ return 1; }
-            return 0;
+    }else if (criterio === ordenarPorRelevanciaDesc){
+       resultado = array.sort(function(a, b) {
+          return parseInt(a.soldCount) - parseInt(b.soldCount)       
         });
     }
-
-    return result;
+    return resultado;
 }
 
+//Esta función toma como parámetros: por un lado el nombre del criterio para ejecutar el sort y por otro
+//lado un array (más adelante al ejecutara usaremos el de productos)
+//La función sirve para explicarle a cada criterio lo que tiene que hacer. Ya que estamos tratando con 
+//números, a diferencia de con caracteres como en el caso de la función similar en categories, podemos 
+//simplemente setear que vaya haciendo restas de dos elementos del array. 
+//Para el orden ascendente a-b , y para el orden descendente b-a
+//Si la resta da 0 el orden de los elementos no cambia
+//Si da positivo significa que a es mayor que b en el criterio de ordenamiento
+//Si da negativo significa que a es menor que b en el criterio de ordenamiento
 
-
-
-function mostrarProductos(arrayProductos){
+function mostrarProductos(){
 
 
     let htmlContentToAppend = "";
@@ -104,6 +86,23 @@ function mostrarProductos(arrayProductos){
     }};
 
 
+function sortYMostrarProductos(sortCriterio, arrayProductos){
+        actualSortCriterio = sortCriterio;
+    
+        if(arrayProductos != undefined){
+            actualProductosArray = arrayProductos;
+        }
+       
+        actualProductosArray = sortProductos(actualSortCriterio, actualProductosArray);
+    
+        //Muestro los productos ordenados
+        mostrarProductos();
+    };
+
+//Esta función toma como perámetros el criterio y el array de productos y lo que hace, usando a función que
+//declaré más arriba, es aplicar el método sort, que ordena los elementos de un array
+//Y luego ejecuta la función de mostrar productos
+    
 
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCTS_URL + localStorage.getItem('catID') + ".json").then(function(resultado){
@@ -116,14 +115,14 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         if (resultado.status === "ok"){
             arrayProductos = resultado.data.products;
-          mostrarProductos(arrayProductos);
+          mostrarProductos();
         }
 
         document.getElementById("rangeFilterCount").addEventListener('click', function () {
             precioMin = document.getElementById("rangeFilterCountMin").value;
             precioMax = document.getElementById("rangeFilterCountMax").value;
-            mostrarProductos(arrayProductos);           
-            }) 
+            mostrarProductos();           
+            }) ;
 
 //Le agregué a la lactura del DOM una escucha de evento para el botón FILTRO, que recoge el valor de precio minimo y maximo que puso el usuario
 //y ejecuta la función mostrarProductos, definida más arriba
@@ -131,13 +130,15 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         document.getElementById("clearRangeFilter").addEventListener('click', function () {
 
-            document.getElementById("rangeFilterCountMin").value = "";
-            document.getElementById("rangeFilterCountMax").value = "";         
+        document.getElementById("rangeFilterCountMin").value = "";
+        document.getElementById("rangeFilterCountMax").value = "";         
                 
-           precioMin = undefined;
-           precioMax = undefined;
-        
-           mostrarProductos(arrayProductos);
+          precioMin = undefined;
+          precioMax = undefined;
+                        
+           mostrarProductos();
+
+        }) ;
 
 //Le agregué una escucha de evento para el botón LIMPIAR que borra los precios que puso el usuario en los casilleros 
 //vuelve a poner undefined las variables de precio minimo y maximo y vuelve a ejecutar la funcion de mostrar
@@ -145,31 +146,24 @@ document.addEventListener("DOMContentLoaded", function(e){
                 
 
 document.getElementById("sortAsc").addEventListener("click", function(){
-    sortAndShowCategories(ordenarPorPrecioAsc);
+    sortYMostrarProductos(ordenarPorPrecioAsc, arrayProductos);
+   
 });
 
 document.getElementById("sortDesc").addEventListener("click", function(){
-    sortAndShowCategories(ordenarPorPrecioDesc);
+    sortYMostrarProductos(ordenarPorPrecioDesc, arrayProductos);
+  
 });
 
 document.getElementById("sortByCount").addEventListener("click", function(){
-    sortAndShowCategories(ordenarPorRelevanciaDesc);
-});
+    sortYMostrarProductos(ordenarPorRelevanciaDesc, arrayProductos);
 
+ });
 
+//Cada uno de los tres botones que sirven para ordenar, con una escucha de evento, ejecutan la función
+//declarada más arriba que ordena y muestra los productos.
 
-    //document.getElementById("sortDesc").addEventListener('click', function () {
-
-       // ordenarPorPrecioDesc (arrayProductos);
-       // mostrarProductos(arrayProductos);
-//alert('jol');
-
-         //   });
- 
-                })        
-
-
-    })});
+})});
 
 
 
@@ -188,6 +182,42 @@ document.getElementById("sortByCount").addEventListener("click", function(){
 
 
 
+/*
+
+BORRADOR BASADO EN CATEGORYS PARA USAR CON EL MÉTODO SORT
+acá, más arriba, hice una versión simplificada de esta función ya que como lo que estaba comaprando era números
+y no letras, como en el caso de categorys, era más fácil hacer una resta y listo, que diera positivo, negativo o igual
+
+
+function sortProductos(criterio, array){
+    let resultado = [];
+    if (criterio === ordenarPorPrecioAsc )
+    {
+        resultado = array.sort(function(a, b) {
+            if ( parseInt(a.cost) < parseInt(b.cost) ){ return -1; }
+            if ( parseInt(a.cost) > parseInt(b.cost) ){ return 1; }
+            return 0;
+        });
+    }else if (criterio === ordenarPorPrecioDesc){
+        resultado = array.sort(function(a, b) {
+            if ( parseInt(a.cost) > parseInt(b.cost) ){ return -1; }
+            if ( parseInt(a.cost) < parseInt(b.cost) ){ return 1; }
+            return 0;
+        });
+    }else if (criterio === ordenarPorRelevanciaDesc){
+       resultado = array.sort(function(a, b) {
+           let aCount = parseInt(a.soldCount);
+           let bCount = parseInt(b.soldCount);
+
+            if ( aCount > bCount ){ return -1; }
+            if ( aCount < bCount ){ return 1; }
+           return 0;
+        });
+    }
+
+    
+    return resultado;
+}*/
 
 
 
