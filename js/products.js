@@ -15,6 +15,13 @@ const ordenarPorRelevanciaDesc = "Relev";
 //y por otrolado las que me van ayudar a setear el criterio para el sort
 
 
+function redireccionar (id){
+    localStorage.setItem("id", id)
+    window.location = "product-info.html";
+}
+
+
+
 function sortProductos(criterio, array){
     let resultado = [];
     if (criterio === ordenarPorPrecioAsc )
@@ -63,7 +70,28 @@ function mostrarProductos(){
 
     if ((precioMin== undefined && precioMax == undefined) || (parseInt(productos.cost)>=precioMin && parseInt(productos.cost)<=precioMax) || (parseInt(productos.cost) >= precioMin && precioMax==undefined) || (parseInt(productos.cost) <= precioMax && precioMin== undefined)){
 
-    
+        htmlContentToAppend += `
+        <div onclick="redireccionar(${productos.id})" class="list-group-item list-group-item-action cursor-active">
+            <div class="row">
+                <div class="col-3">
+                    <img src="${productos.image}" alt="${productos.description}" class="img-thumbnail">
+                </div>
+                <div class="col">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h4 class="mb-1">${productos.name} - ${productos.currency} ${productos.cost} </h4>
+                        <small class="text-muted">${productos.soldCount} artículos</small>
+                    </div>
+                    <p class="mb-1">${productos.description}</p>
+                </div>
+            </div>
+        </div>
+        `
+    }
+
+
+
+
+    /*
             htmlContentToAppend += `
             <div onclick="setCatID(${productos.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
@@ -81,7 +109,7 @@ function mostrarProductos(){
             </div>
             `
         }
-
+*/
         document.getElementById("listaProductos").innerHTML = htmlContentToAppend;
      
 
@@ -146,7 +174,8 @@ document.addEventListener("DOMContentLoaded", function(e){
 //Le agregué una escucha de evento para el botón LIMPIAR que borra los precios que puso el usuario en los casilleros 
 //vuelve a poner undefined las variables de precio minimo y maximo y vuelve a ejecutar la funcion de mostrar
 //productos, que al estar las variables indefinidas, muestra todos los productos de vuelta
-                
+ 
+
 
 document.getElementById("sortAsc").addEventListener("click", function(){
     sortYMostrarProductos(ordenarPorPrecioAsc, arrayProductos);
