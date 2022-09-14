@@ -19,7 +19,10 @@ function redireccionar (id){
     localStorage.setItem("id", id)
     window.location = "product-info.html";
 }
-
+//Entrega 3
+//armé la función redireccionar que toma como parámetro el id del producto, y lo que hace la función
+//es, primero guardar el id en el local storage
+//luego redireccionar a product info
 
 
 function sortProductos(criterio, array){
@@ -114,6 +117,7 @@ function mostrarProductos(){
      
 
     }};
+
 
 
 function sortYMostrarProductos(sortCriterio, arrayProductos){
