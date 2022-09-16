@@ -62,8 +62,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 //La principal diferencia fue que tuve que recorrer el array de comentarios con un for
 //para poder mostrarlos todos 
 
-//faltan las entrellas para completar punto 3!
-
+//Para las estrellas cree una función más abajo y fue la que usé dentro de la funcion mostrar comentarios
 
 let arrayComentarios = [];
 
@@ -73,14 +72,73 @@ function mostrarComentarios() {
     for (let comentario of arrayComentarios){
        
         htmlContentToAppend += `
-
      
-        <p>${comentario.user} - ${comentario.dateTime} -  </p>
+        <p>${comentario.user} - ${comentario.dateTime} - ${estrellas(comentario)}
+
         <p>${comentario.description}
-      
 
         ` 
         document.getElementById("comentarios").innerHTML = htmlContentToAppend;
+}};
+
+
+
+//Para la función que muestra la cantidad de estrellas en función del score, lo que hice fue hacer 
+//un condicional, que dependiendo de si el puntaje era 1, 2, 3, 4 o 5 mostraba esa cantidad de esterellas
+//capaz hay alguna forma más sencillo de hacerlo, pero esta funciona. En cada número, que seteo chequed a 
+//la cantidad de estrellas correspindientes, y después cuando llamo a la función le paso como parámetro
+//la info del socre del jason de comentarios (que en realidad ya me la traje acá y esta en el arrayComentarios)
+
+function estrellas(infoComentarios){
+
+let puntaje = infoComentarios.score;
+
+if (puntaje==1){
+    return(
+    `
+    <span class="fa fa-star checked" ></span>
+    <span class="fa fa-star "></span>
+    <span class="fa fa-star "></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    `)    
+} else if (puntaje==2){
+    return(
+    `
+    <span class="fa fa-star checked" ></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star "></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    `)  
+} else if (puntaje==3){
+    return(
+    `
+    <span class="fa fa-star checked" ></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    `) 
+} else if (puntaje==4){
+    return(
+    `
+    <span class="fa fa-star checked" ></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+    `) 
+} else if (puntaje==5){
+    return(
+    `
+    <span class="fa fa-star checked" ></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    `) 
+
 }};
 
 document.addEventListener("DOMContentLoaded", function(e){
@@ -90,4 +148,4 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultado.status === "ok"){
             arrayComentarios = resultado.data;
             mostrarComentarios();
-        }})})
+        }})});

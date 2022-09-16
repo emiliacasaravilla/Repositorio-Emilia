@@ -10,6 +10,10 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--   ACA AGREGUÉ LA REFERENCIA PARA LAS ESTRELLAS
+<!-->
+
 </head>
 
 <body>
@@ -45,34 +49,49 @@
     </p>
 
 
-    <p>  <h3>Comentarios</h3>
+    <h3>Comentarios</h3>
       <ul id="comentarios">
        
       </ul>
+
+    <h3>Comentar</h3>
+      <p>Tu opinión</p>
+
+      <textarea id="cuerpo"></textarea>
+
+
+      <p>Tu puntuación</p>
+
+      <select id="puntuacion" name="puntuacion" required>
+        <option value="consulta">1</option>
+        <option value="propuesta">2</option>
+        <option value="reporte">3</option>
+        <option value="otro">4</option>
+        <option value="otro">5</option>
+    </select>
+    <br>
+    <br>
+
+      <button>Enviar</button>
       
-      </p>
 
  <!--   ACA CREE EL ESPACIO DONDE DESPUES DESDE JS METO LA INFO DEL PRODUCTO
+
+  También, enseguida después, puse los controles gráficos que permiten al usuario poner un comentario,
+  seleccionar un puntaje y un botón para enviar.
 <!-->
 
 
- <!-- <main>
-  ESTO ES UNA PREUEBA DE ARMAR LOS CASILLEROS DONDE VA AL INFO ACA, EN EL HTML, PERO MEJOR LO HAGO DORECTO DESDE EL SCRIPT, CREO
-  <h2></h2>
 
-<p>Precio</p>
-<p id="precio"></p>
-<p>Descripción</p>
-<p id="descricpcion"></p>
-<p>Categoría</p>
-<p id="categoria"></p>
-<p>Cantidad de vendido</p>
-<p id="cantidadDeVendido"></p>
-<p>Imágenes ilustrativas</p>
+
+  
 
 
 
 
+
+
+ <!-- 
 
 ESTO ES LO QUE AVISABA PAG EN CONSTRUCC
     <div class="container">
@@ -86,6 +105,8 @@ ESTO ES LO QUE AVISABA PAG EN CONSTRUCC
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p> <!-->
+
+
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
         2022</p>
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
