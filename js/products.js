@@ -73,6 +73,8 @@ function mostrarProductos(){
 
     if ((precioMin== undefined && precioMax == undefined) || (parseInt(productos.cost)>=precioMin && parseInt(productos.cost)<=precioMax) || (parseInt(productos.cost) >= precioMin && precioMax==undefined) || (parseInt(productos.cost) <= precioMax && precioMin== undefined)){
 
+//Entrega 3
+//aca ejecuto la funcion de redireccionamiento, con el evento onclick 
         htmlContentToAppend += `
         <div onclick="redireccionar(${productos.id})" class="list-group-item list-group-item-action cursor-active">
             <div class="row">

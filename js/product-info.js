@@ -1,39 +1,40 @@
+
 //TODO ESTE JS ES DE LA ENTREGA 3 (por ahora)
 
-let arrayProducto = [];
+let producto = undefined;
 
 //declaré una variable donde alamcenar la info de cada producto, que voy a traer del json
 
 
 function mostrarInfoProducto(){
 
-//creé la función que más adelante voy a llamar, que se encarag de mostrar la info del prodcuto
+//creé la función que más adelante voy a llamar, que se encarga de mostrar la info del prodcuto
 //escribo html para subir ese contendio en un contenedor que ya creé en product-info.html, con el id infoProducto
 //referencio todos los datos, extraídos del json, que ahora está en el arrayProducto
 //(las imágenes están guardadas como un array todas juntas, por eso las referencio con un número, por orden)
-//por ahora, no logré ponerlas una al lado de otra, me quedaron una abajo de la otra)
+//(por ahora, no logré ponerlas una al lado de otra, me quedaron una abajo de la otra)
 
     let htmlContentToAppend = "";
  
    
         htmlContentToAppend += `
-        <h2>${arrayProducto.name}</h2>
+        <h2>${producto.name}</h2>
         <br>
         <hr>
         <p>Precio</p>
-        <p id="precio">${arrayProducto.currency} ${arrayProducto.cost}</p>
+        <p id="precio">${producto.currency} ${producto.cost}</p>
         <p>Descripción</p>
-        <p id="descricpcion">${arrayProducto.description}</p>
+        <p id="descricpcion">${producto.description}</p>
         <p>Categoría</p>
-        <p id="categoria">${arrayProducto.category}</p>
+        <p id="categoria">${producto.category}</p>
         <p>Cantidad de vendido</p>
-        <p id="cantidadDeVendidos">${arrayProducto.soldCount}</p>
+        <p id="cantidadDeVendidos">${producto.soldCount}</p>
         <p>Imágenes ilustrativas</p>
         <div class="col-3">
-                <img src="${arrayProducto.images[0]}" class="img-thumbnail">
-                <img src="${arrayProducto.images[1]}" class="img-thumbnail">
-                <img src="${arrayProducto.images[2]}" class="img-thumbnail">
-                <img src="${arrayProducto.images[3]}" class="img-thumbnail">
+                <img src="${producto.images[0]}" class="img-thumbnail">
+                <img src="${producto.images[1]}" class="img-thumbnail">
+                <img src="${producto.images[2]}" class="img-thumbnail">
+                <img src="${producto.images[3]}" class="img-thumbnail">
                 </div>
       
         `    
@@ -47,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function(e){
   
     
             if (resultado.status === "ok"){
-                arrayProducto = resultado.data;
+               producto = resultado.data;
                 mostrarInfoProducto();
             }})})
 
