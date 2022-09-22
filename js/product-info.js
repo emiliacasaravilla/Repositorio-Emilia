@@ -1,7 +1,6 @@
 
-//TODO ESTE JS ES DE LA ENTREGA 3 (por ahora)
-
 let producto = undefined;
+
 
 //declaré una variable donde alamcenar la info de cada producto, que voy a traer del json
 
@@ -10,7 +9,7 @@ function mostrarInfoProducto(){
 
 //creé la función que más adelante voy a llamar, que se encarga de mostrar la info del prodcuto
 //escribo html para subir ese contendio en un contenedor que ya creé en product-info.html, con el id infoProducto
-//referencio todos los datos, extraídos del json, que ahora está en el arrayProducto
+//referencio todos los datos, extraídos del json, que ahora está en la variable producto
 //(las imágenes están guardadas como un array todas juntas, por eso las referencio con un número, por orden)
 //(por ahora, no logré ponerlas una al lado de otra, me quedaron una abajo de la otra)
 
@@ -41,6 +40,46 @@ function mostrarInfoProducto(){
 document.getElementById("infoProducto").innerHTML = htmlContentToAppend;
 }
 
+//ACÁ EMPIEZA ENTREGA 4:
+//creé una variable para que luego alamcene los productos relainados
+//armé una función de redireccionamiento que guarde el id del producto que el usuario seleccione
+//armé una función que muestra los prod relacionados, usando un for para recorrer el array de prod relacionados
+//(por si en otros casos son más de 2 productos que quiere mostrar)
+//esa función tiene el onclick que lo que hace es llamar a la función redireccionar con el id guardado
+//en el local storage como parámetro
+//la función muestra foto chiquita y nombre de los productos
+
+
+let productosRelacionados = undefined;
+
+function redireccionar (id){
+    localStorage.setItem("id", id)
+    window.location = "product-info.html";
+}
+
+function mostrarRelacionados(){
+
+     let htmlContentToAppend = "";
+ 
+     for(prodRel of productosRelacionados){
+        
+
+        htmlContentToAppend += `
+        <div onclick="redireccionar(${prodRel.id})">
+        <div class="col-3">
+         <img src="${prodRel.image}" class="img-thumbnail">
+         </div>
+        <p>${prodRel.name}</p>
+        </div>
+
+        `    
+        document.getElementById("relacionados").innerHTML = htmlContentToAppend;
+        }};
+        
+
+
+
+
 
     
 document.addEventListener("DOMContentLoaded", function(e){
@@ -49,13 +88,23 @@ document.addEventListener("DOMContentLoaded", function(e){
     
             if (resultado.status === "ok"){
                producto = resultado.data;
+               productosRelacionados =producto.relatedProducts;
+
                 mostrarInfoProducto();
+                mostrarRelacionados();
             }})})
 
 //Hice una solicitud de carga con el url de product info que estaba en init
 //concatenando con el id del producto que estaba guardado en el local storage más el .json
-//así consigo que, dependiendo de qué producto haya seleciconado el usuario, arrayProducto se llena de su info
+//así consigo que, dependiendo de qué prod haya seleciconado el usuario, la variable producto se llena de su info
 //luego, ejecuto la función que muestra la info, definida anteriormente
+
+
+//ENTREGA 4:
+//agregué a esta solicitud de carga dos cosas:
+//le agregué contenido a la variable vacía que ahora tiene la info de los prod relacionados
+//llamé a la función de mostrar los productos relacionados
+
 
 
 
@@ -150,3 +199,6 @@ document.addEventListener("DOMContentLoaded", function(e){
             arrayComentarios = resultado.data;
             mostrarComentarios();
         }})});
+
+
+//aca hago la solicitud de carga con el url de los comentarios, y ejecuto la funcion 
