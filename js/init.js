@@ -44,7 +44,7 @@ let getJSONData = function(url){
 
 
 //function ponerNombreUsuario (){
-  // let htmlContentToAppend = localStorage.getItem('nombreUsuario');
+   //let htmlContentToAppend = localStorage.getItem('nombreUsuario');
   //document.getElementById("nombreDeUsuario").innerHTML = htmlContentToAppend;
 //}
 
@@ -62,7 +62,7 @@ let getJSONData = function(url){
 
 
 function cerrarSesion(){
-  localStorage.clear('nombreUsuario');
+  localStorage.removeItem('nombreUsuario');
 }
 
 
@@ -74,13 +74,13 @@ function agregarMenuDesplegable (){
   htmlContentToAppend += `
   
   <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
   ${localStorage.getItem('nombreUsuario')}
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
-    <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-    <li><a class="dropdown-item" href="index.html" id="xxx" onclick="${cerrarSesion()}">Cerrar sesión</a></li>
+    <li><a class="dropdown-item" href="cart.html" role="button">Mi carrito</a></li>
+    <li><a class="dropdown-item" href="my-profile.html" role="button">Mi perfil</a></li>
+    <li><a class="dropdown-item" href="index.html" onclick="${cerrarSesion()}" role="button">Cerrar sesión</a></li>
   </ul>
 </div>
 
@@ -88,12 +88,10 @@ function agregarMenuDesplegable (){
 document.getElementById("nombreDeUsuario").innerHTML = htmlContentToAppend;
 };
 
-// onclick="${cerrarSesion()}"
-
 
 
 agregarMenuDesplegable ();
   
-//xxx.onclick = cerrarSesion();
+
   
  
