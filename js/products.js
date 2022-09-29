@@ -155,9 +155,25 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
 
         document.getElementById("rangeFilterCount").addEventListener('click', function () {
+
+     /*       if (document.getElementById("rangeFilterCountMin").value != "") {
+                precioMin = parseInt(document.getElementById("rangeFilterCountMin").value);
+            }else{
+                precioMin = undefined;
+            }
+    
+            if (document.getElementById("rangeFilterCountMax").value != "") {
+                precioMax = parseInt(document.getElementById("rangeFilterCountMax").value);
+            }else{
+                precioMax = undefined;
+            }
+            mostrarProductos();
+        }) */
+        
             precioMin = document.getElementById("rangeFilterCountMin").value;
             precioMax = document.getElementById("rangeFilterCountMax").value;
-            mostrarProductos();           
+            mostrarProductos();
+        
             }) ;
 
 //Le agregué a la solicitud de carga una escucha de evento para el botón FILTRO, 
