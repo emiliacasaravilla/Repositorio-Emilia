@@ -63,6 +63,7 @@ let getJSONData = function(url){
 
 function cerrarSesion(){
   localStorage.removeItem('nombreUsuario');
+
 }
 
 
@@ -80,7 +81,7 @@ function agregarMenuDesplegable (){
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <li><a class="dropdown-item" href="cart.html" role="button">Mi carrito</a></li>
     <li><a class="dropdown-item" href="my-profile.html" role="button">Mi perfil</a></li>
-    <li><a class="dropdown-item" href="index.html" onclick="${cerrarSesion()}" role="button">Cerrar sesión</a></li>
+    <li><a class="dropdown-item" href="index.html" onclick="cerrarSesion()" role="button">Cerrar sesión</a></li>
   </ul>
 </div>
 
