@@ -41,14 +41,13 @@ document.getElementById("infoProducto").innerHTML = htmlContentToAppend;
 }
 
 //ACÁ EMPIEZA ENTREGA 4:
-//creé una variable para que luego alamcene los productos relainados
+//creé una variable para que luego alamcene los productos relacionados
 //armé una función de redireccionamiento que guarde el id del producto que el usuario seleccione
 //armé una función que muestra los prod relacionados, usando un for para recorrer el array de prod relacionados
 //(por si en otros casos son más de 2 productos que quiere mostrar)
 //esa función tiene el onclick que lo que hace es llamar a la función redireccionar con el id guardado
 //en el local storage como parámetro
 //la función muestra foto chiquita y nombre de los productos
-
 
 let productosRelacionados = undefined;
 
@@ -58,12 +57,8 @@ function redireccionar (id){
 }
 
 function mostrarRelacionados(){
-
      let htmlContentToAppend = "";
- 
-     for(prodRel of productosRelacionados){
-        
-
+      for(prodRel of productosRelacionados){
         htmlContentToAppend += `
         <div onclick="redireccionar(${prodRel.id})">
         <div class="col-3">
@@ -71,8 +66,7 @@ function mostrarRelacionados(){
          </div>
         <p>${prodRel.name}</p>
         </div>
-
-        `    
+       `    
         document.getElementById("relacionados").innerHTML = htmlContentToAppend;
         }};
         
@@ -88,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     
             if (resultado.status === "ok"){
                producto = resultado.data;
-               productosRelacionados =producto.relatedProducts;
+               productosRelacionados = producto.relatedProducts;
 
                 mostrarInfoProducto();
                 mostrarRelacionados();
@@ -102,8 +96,9 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 //ENTREGA 4:
 //agregué a esta solicitud de carga dos cosas:
-//le agregué contenido a la variable vacía que ahora tiene la info de los prod relacionados
-//llamé a la función de mostrar los productos relacionados
+//1-le agregué contenido del json a la variable de prod relacionado que estaba vacía
+// y que ahora pasa a tener la info de los prod relacionados
+//2-llamé a la función de mostrar los productos relacionados
 
 
 
@@ -201,4 +196,4 @@ document.addEventListener("DOMContentLoaded", function(e){
         }})});
 
 
-//aca hago la solicitud de carga con el url de los comentarios, y ejecuto la funcion 
+//aca hago la solicitud de carga con el url de los comentarios, y ejecuto la función 

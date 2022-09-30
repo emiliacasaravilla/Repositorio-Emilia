@@ -69,13 +69,10 @@ function cerrarSesion(){
 
 function agregarMenuDesplegable (){
   
-  let htmlContentToAppend = "";
- 
-   
-  htmlContentToAppend += `
-  
+  let htmlContentToAppend = ""; 
+  htmlContentToAppend += ` 
   <div class="dropdown">
-  <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
   ${localStorage.getItem('nombreUsuario')}
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -84,14 +81,22 @@ function agregarMenuDesplegable (){
     <li><a class="dropdown-item" href="index.html" onclick="cerrarSesion()" role="button">Cerrar sesión</a></li>
   </ul>
 </div>
-
   `    
 document.getElementById("nombreDeUsuario").innerHTML = htmlContentToAppend;
 };
-
-
-
 agregarMenuDesplegable ();
+
+//ENTREGA 4
+//dejé de usar la función usada en ej anteriores para mostrar el nombre de usuario en la barra
+//creé la función para hacer el dropdown en donde está el nombre del usuario
+//esta función agrega contenido al html, a la sección con el id "nombreDeUsuario"
+//en el div de clase dropdown primero puse un botón, y para el texto del botón es que llamo con un get al
+//nombre de usuario que está en el local storage
+//en el listado de elementos del dropdown uso elementos con etiqueta <a> para que me redirija 
+//a las páginas: carrito, perfil y a la ide index para cerras sesión.
+//para efectuar el cerrado de sesión creé una función que con el metodo remove borra el nombre
+//de usuario almacenado en el local storage y llamo a esa función agregando un onclick en el <a> de cerrar sesión
+//finalmente, llamo a la función agregarMenuDesplegable ()
   
 
   
