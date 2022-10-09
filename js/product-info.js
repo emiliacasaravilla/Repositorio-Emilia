@@ -94,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 //luego, ejecuto la función que muestra la info, definida anteriormente
 
 
+
 //ENTREGA 4:
 //agregué a esta solicitud de carga dos cosas:
 //1-le agregué contenido del json a la variable de prod relacionado que estaba vacía
