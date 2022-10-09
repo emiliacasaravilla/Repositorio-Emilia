@@ -37,24 +37,81 @@
   </nav>
   <main>
   <h1>Carrito de compras</h1>
-  <h4>Articulos a comprar</h4>
+  <h4>Artículos a comprar</h4>
 
-  <ul id="infoProdCarrito">
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+       
+      </div>
+      <div class="col-2">
+        Nombre
+      </div>
+      <div class="col-2">
+        Costo
+      </div>
+      <div class="col-2">
+        Cantidad
+      </div>
+      <div class="col-4">
+        Subtotal
+      </div>
+    </div>
+  </div>
+
+  <!-- ENTREGA 5
+  
+Acá creé el container donde va a ir la info de los productos que vayamos agregando al carrito
+Lo dividí en columnas para armar una tabla como la del ejemplo, y esas mismas columnas usé en el
+java script para agregar la info de los prodctos.
+Dejé un espacio libre con el id infoProdCarrito, que voy a usar desde el scrop para carga esa info-->
+
+
+  <hr>
+
+
+<div id="infoProdCarrito">
       
-  </ul>
+</div>
 
+<hr>
 
+<form>
+  <h4>Tipo de envio</h4>
+   
+      <div>
+        <input type="radio" id="premium"
+         name="envio">
+        <label for="premium">Premium 2 a 5 días (15%)</label>
+  
+        <input type="radio" id="express"
+         name="envio" >
+        <label for="express" >Express 5 a 8 días (7%)</label>
+  
+        <input type="radio" id="standard"
+         name="envio" >
+        <label for="standard">Standard 12 a 15 días (5%)</label>
+      </div>
+     
+  <h4>Dirección de envío</h4>
+  <label type="text">Calle</label>
+  <input></input>
+  <label>Número</label>
+  <input type="number"></input>
+  <label>Esquina</label>
+  <input type="text"></input>
+</form>
 
+<!-- ENTREGA 5
+  
+  Acá armé un forumario que por ahora solo muestra los controles gráficos para llenar los datos de envío
+Para seleccionar el tipo de envío uso inputs de tipo radio, que pemiten elegir una opción
+Para los datos de la dirección de envio, por ahora, un input tipo text o number, según corresponda-->
 
+<hr>
 
+</main>
 
-
-
-
-
-
-
-  </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
