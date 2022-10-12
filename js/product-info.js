@@ -20,20 +20,18 @@ function mostrarInfoProducto(){
         <h2>${producto.name}</h2>
         <br>
         <hr>
-        <p>Precio</p>
-        <p id="precio">${producto.currency} ${producto.cost}</p>
-        <p>Descripción</p>
-        <p id="descricpcion">${producto.description}</p>
-        <p>Categoría</p>
-        <p id="categoria">${producto.category}</p>
-        <p>Cantidad de vendido</p>
-        <p id="cantidadDeVendidos">${producto.soldCount}</p>
-        <p>Imágenes ilustrativas</p>
+        <p id="precio">Precio: ${producto.currency} ${producto.cost}</p>
+        <p id="descricpcion">Descripción: ${producto.description}</p>
+        <p id="categoria">Categoría: ${producto.category}</p>
+        <p id="cantidadDeVendidos">Cantidad de vendido: ${producto.soldCount}</p>
+        <p>Imágenes ilustrativas:</p>
         <div class="col-3">
+      
                 <img src="${producto.images[0]}" class="img-thumbnail">
                 <img src="${producto.images[1]}" class="img-thumbnail">
                 <img src="${producto.images[2]}" class="img-thumbnail">
                 <img src="${producto.images[3]}" class="img-thumbnail">
+                
                 </div>
       
         `    

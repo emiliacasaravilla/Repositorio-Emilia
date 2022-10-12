@@ -6,21 +6,24 @@ Creé la variable donde voy a guardar la info del producto que está en el json
 */
 
 
- function calcularSubtotal(){
-    let cantidad = cantidad.value;
-    let subTotal= productosCarrito.articles[0].unitCost * cantidad;
-    return subTotal
- }
+ 
 
 /*ENTREGA 5
 
 ESTO TOAVÍA NO ESTÁ RESULTO BUUUUUU
 
+
 */
 
+function ajustarSubtotal(){
+  let cantidad = cantidad.value;
+  let subTotal= productosCarrito.articles[0].unitCost * cantidad;
+  return subTotal
+}
 
 function mostrarProdCarrito(){
     let htmlContentToAppend = "";
+
    
         htmlContentToAppend += `
           
@@ -36,10 +39,10 @@ function mostrarProdCarrito(){
       ${productosCarrito.articles[0].currency} ${productosCarrito.articles[0].unitCost}
       </div>
       <div class="col-2">
-        <input type='number' oninput="calcularSubtotal()" min="1" id='cantidad' value='${productosCarrito.articles[0].count}' class='input-carro'></input>
+        <input type='number' oninput="ajustarSubtotal()" min="1" id='cantidad' value='${productosCarrito.articles[0].count}' class='input-carro'></input>
       </div>
       <div class="col-4">
-      ${productosCarrito.articles[0].currency}  ${productosCarrito.articles[0].count * productosCarrito.articles[0].unitCost};
+      ${productosCarrito.articles[0].currency}  ${productosCarrito.articles[0].unitCost};
       
       
       </div>
@@ -48,6 +51,7 @@ function mostrarProdCarrito(){
         `    
 document.getElementById("infoProdCarrito").innerHTML = htmlContentToAppend;
 };
+
 
 /*ENTREGA 5
 Creé la función que muestra info del producto.
