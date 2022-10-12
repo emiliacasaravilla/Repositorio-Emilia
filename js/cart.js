@@ -36,10 +36,12 @@ function mostrarProdCarrito(){
       ${productosCarrito.articles[0].currency} ${productosCarrito.articles[0].unitCost}
       </div>
       <div class="col-2">
-        <input type='number' min="1" id='cantidad' value='${productosCarrito.articles[0].count}' class='input-carro'></input>
+        <input type='number' oninput="calcularSubtotal()" min="1" id='cantidad' value='${productosCarrito.articles[0].count}' class='input-carro'></input>
       </div>
       <div class="col-4">
-      ${productosCarrito.articles[0].currency} ${document.getElementById('cantidad.value') * productosCarrito.articles[0].unitCost }
+      ${productosCarrito.articles[0].currency}  ${productosCarrito.articles[0].count * productosCarrito.articles[0].unitCost};
+      
+      
       </div>
     </div>
   </div>  
@@ -54,6 +56,9 @@ porque el el producto está guardado dentro de articles como un objeto dentro de
 (a pesar de que haya uno solo)
 -Para poner la cantidad de porductos creé un input con el value, por defecto, que tiene el json (1)
 -ACA TODAVÍA NO RESOLVÍ LO DE LA MULTIPLICACIÓN, PORQUE NO PUEDO ACCEDER AL VALUE!
+
+ ${document.getElementById('cantidad.value')
+
 */
 
 
