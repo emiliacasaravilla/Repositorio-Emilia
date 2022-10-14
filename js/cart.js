@@ -1,12 +1,11 @@
 
 let productosCarrito = [];
 
+
 /*ENTREGA 5
 Creé la variable donde voy a guardar la info del producto que está en el json
 */
 
-
- 
 
 /*ENTREGA 5
 
@@ -14,12 +13,11 @@ ESTO TOAVÍA NO ESTÁ RESULTO BUUUUUU
 
 
 */
-
-function ajustarSubtotal(){
-  let cantidad = cantidad.value;
-  let subTotal= productosCarrito.articles[0].unitCost * cantidad;
-  return subTotal
-}
+function ajustarSubtotal(array){
+  let cantidad = document.getElementById("cantidad");
+  array.articles[0].count === cantidad;
+  
+};
 
 function mostrarProdCarrito(){
     let htmlContentToAppend = "";
@@ -39,18 +37,18 @@ function mostrarProdCarrito(){
       ${productosCarrito.articles[0].currency} ${productosCarrito.articles[0].unitCost}
       </div>
       <div class="col-2">
-        <input type='number' oninput="ajustarSubtotal()" min="1" id='cantidad' value='${productosCarrito.articles[0].count}' class='input-carro'></input>
+        <input type='number' oninput="ajustarSubtotal(productosCarrito)" min="1" id='cantidad' value='${productosCarrito.articles[0].count}' class='input-carro'></input>
       </div>
       <div class="col-4">
-      ${productosCarrito.articles[0].currency}  ${productosCarrito.articles[0].unitCost};
-      
-      
+      ${productosCarrito.articles[0].currency} ${productosCarrito.articles[0].count * productosCarrito.articles[0].unitCost}; 
       </div>
     </div>
   </div>  
         `    
 document.getElementById("infoProdCarrito").innerHTML = htmlContentToAppend;
 };
+
+
 
 
 /*ENTREGA 5
@@ -61,7 +59,6 @@ porque el el producto está guardado dentro de articles como un objeto dentro de
 -Para poner la cantidad de porductos creé un input con el value, por defecto, que tiene el json (1)
 -ACA TODAVÍA NO RESOLVÍ LO DE LA MULTIPLICACIÓN, PORQUE NO PUEDO ACCEDER AL VALUE!
 
- ${document.getElementById('cantidad.value')
 
 */
 
@@ -73,6 +70,10 @@ document.addEventListener("DOMContentLoaded", function(e){
            productosCarrito = resultado.data;
 
             mostrarProdCarrito();
+
+           
+
+          
             
            }})})
 
@@ -82,3 +83,5 @@ del usuario birndado en la premisa (y agregar el .json)
 Después de guardar la info en la variable previamente definida productosCarrito
 llamé a la función de mostrarProdCarrito
 */
+
+

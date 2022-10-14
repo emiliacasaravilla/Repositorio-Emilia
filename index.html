@@ -18,23 +18,38 @@
 
 <body>
 
-  <div class="container m-5">
+  <div class="container col-3 m-5 ">
 
-  <h1>Inicio de sesión</h1>
+    <div class="row justify-content-center">
+  <h1 class="text-center">Inicio de sesión</h1>
 
-
+  <label class="m-b-4 " for="email">Email</label>
   
-  <label for="email">Email</label>
-  <br>
-  <input type="text" id="email">
-  <br>
-  <br>
-  <label for="contra">Contraseña</label>
-  <br>
-  <input type="text" id="contra">
-  <br>
-  <br>
-  <button type="button" id="ingresar">Ingresar</button>
+  <input class="m-b-4 rounded" type="text" id="email">
+  
+  <label class="m-b-4 " for="contra">Contraseña</label>
+  
+  <input class="m-b- rounded" type="text" id="contra">
+ 
+  <button class="m-b-4 btn btn-outline-dark" type="button" id="ingresar">Ingresar</button>
+
+</div>
+</div>
+
+<div class="container">
+  <div class="abs-center">
+    <form action="#" class="border p-3 form">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
 </div>
   
   <!--<main class="mt-5">
