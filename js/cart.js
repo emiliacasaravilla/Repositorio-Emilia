@@ -1,23 +1,32 @@
 
 let productosCarrito = [];
-
+let cantidadActual = undefined;
 
 /*ENTREGA 5
-Creé la variable donde voy a guardar la info del producto que está en el json
+Creé el array donde voy a guardar la info del producto que está en el json
 */
+
 
 
 /*ENTREGA 5
 
 ESTO TOAVÍA NO ESTÁ RESULTO BUUUUUU
+function ajustarSubtotal(productosCarrito){
+  
+ 
+ let productosCarrito = productosCarrito.articles[0].splice(2, 0, cantidadActual)
+   
+  
+};
 
 
 */
-function ajustarSubtotal(array){
-  let cantidad = document.getElementById("cantidad");
-  array.articles[0].count === cantidad;
-  
-};
+
+function ajustarSubtotal(productosCarrito) {
+    let productosCarrito = productosCarrito.articles[0].splice(2, 0, cantidadActual)
+  };
+   
+ 
 
 function mostrarProdCarrito(){
     let htmlContentToAppend = "";
@@ -25,7 +34,7 @@ function mostrarProdCarrito(){
    
         htmlContentToAppend += `
           
-        <div class="container">
+  <div class="container">
     <div class="row">
       <div class="col-2">
       <img src="${productosCarrito.articles[0].image}" class="img-thumbnail">
@@ -37,7 +46,7 @@ function mostrarProdCarrito(){
       ${productosCarrito.articles[0].currency} ${productosCarrito.articles[0].unitCost}
       </div>
       <div class="col-2">
-        <input type='number' oninput="ajustarSubtotal(productosCarrito)" min="1" id='cantidad' value='${productosCarrito.articles[0].count}' class='input-carro'></input>
+        <input type='number' min="1" id='cantidad' value='${productosCarrito.articles[0].count}' class='input-carro'><span id="result"></span></input>
       </div>
       <div class="col-4">
       ${productosCarrito.articles[0].currency} ${productosCarrito.articles[0].count * productosCarrito.articles[0].unitCost}; 
@@ -71,7 +80,11 @@ document.addEventListener("DOMContentLoaded", function(e){
 
             mostrarProdCarrito();
 
-           
+            let cantidadActual = cantidad.value;
+
+            console.log(cantidadActual);
+
+            cantidad.oninput = ajustarSubtotal(productosCarrito);
 
           
             
@@ -82,6 +95,14 @@ Hice una solicitud de carga con el url de CART INFO que estaba en init y lo conc
 del usuario birndado en la premisa (y agregar el .json)
 Después de guardar la info en la variable previamente definida productosCarrito
 llamé a la función de mostrarProdCarrito
+
+
+BORRAR ESTO>
+
+
 */
+
+
+
 
 
