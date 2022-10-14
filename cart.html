@@ -77,31 +77,42 @@ Dejé un espacio libre con el id infoProdCarrito, que voy a usar desde el scrop 
 
 <hr>
 
+<div class="container">
 <form>
   <h4>Tipo de envio</h4>
    
-      <div>
+      <div class='my-4'>
         <input type="radio" id="premium"
          name="envio">
-        <label for="premium">Premium 2 a 5 días (15%)</label>
+        <label for="premium">Premium 2 a 5 días (15%)</label><br>
   
         <input type="radio" id="express"
          name="envio" >
-        <label for="express" >Express 5 a 8 días (7%)</label>
+        <label for="express" >Express 5 a 8 días (7%)</label><br>
   
         <input type="radio" id="standard"
          name="envio" >
-        <label for="standard">Standard 12 a 15 días (5%)</label>
+        <label for="standard">Standard 12 a 15 días (5%)</label><br>
       </div>
-     
-  <h4>Dirección de envío</h4>
-  <label type="text">Calle</label>
-  <input></input>
+
+   
+  
+  <h4 class='my-4 '>Dirección de envío</h4>
+  <div row class="my-3">
+  <label type="text" >Calle</label>
+  <input ></input>
+</div>
+<div row class="my-3">
   <label>Número</label>
-  <input type="number"></input>
+  <input type="number" ></input>
+</div>
+<div row class="my-3">
   <label>Esquina</label>
-  <input type="text"></input>
+  <input type="text" ></input>
+</div>
 </form>
+
+</div>
 
 <!-- ENTREGA 5
   
