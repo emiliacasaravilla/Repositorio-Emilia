@@ -29,7 +29,8 @@ function guardarNombreDeUsuario (){
       window.location.href = "principal.html";
       
     } else{
-      alert ('Debe escribir su email y contraseña!')
+
+    alert ('Debe escribir su email y contraseña!')
     }
 });
 

@@ -37,13 +37,12 @@
   </nav>
   <main>
     <div class="container m-5">
-  <h1 class="m-t-5">Carrito de compras</h1>
-  <h4 class="m-t-5">Artículos a comprar</h4>
+  <h1 class="my-5">Carrito de compras</h1>
+  <h4 class="my-4 lead">Artículos a comprar</h4>
 
   <div class="container m-t-5">
     <div class="row">
       <div class="col-2">
-       
       </div>
       <div class="col-2">
         Nombre
@@ -65,11 +64,9 @@
 Acá creé el container donde va a ir la info de los productos que vayamos agregando al carrito
 Lo dividí en columnas para armar una tabla como la del ejemplo, y esas mismas columnas usé en el
 java script para agregar la info de los prodctos.
-Dejé un espacio libre con el id infoProdCarrito, que voy a usar desde el scrop para carga esa info-->
-
+Dejé un div libre con el id infoProdCarrito, que voy a usar desde el script para carga esa info-->
 
   <hr>
-
 
 <div id="infoProdCarrito">
       
@@ -77,7 +74,7 @@ Dejé un espacio libre con el id infoProdCarrito, que voy a usar desde el scrop 
 
 <hr>
 
-<div class="container">
+<div class="container my-5">
 <form>
   <h4>Tipo de envio</h4>
    
@@ -99,16 +96,16 @@ Dejé un espacio libre con el id infoProdCarrito, que voy a usar desde el scrop 
   
   <h4 class='my-4 '>Dirección de envío</h4>
   <div row class="my-3">
-  <label type="text" >Calle</label>
-  <input ></input>
+  <label class='col-1'>Calle</label>
+  <input class='col-3' type="text" ></input>
 </div>
 <div row class="my-3">
-  <label>Número</label>
-  <input type="number" ></input>
+  <label class='col-1'>Número</label>
+  <input class='col-3' type="number" ></input>
 </div>
 <div row class="my-3">
-  <label>Esquina</label>
-  <input type="text" ></input>
+  <label class='col-1'>Esquina</label>
+  <input class='col-3'type="text" ></input>
 </div>
 </form>
 
