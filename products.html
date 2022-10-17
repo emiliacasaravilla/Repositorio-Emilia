@@ -45,25 +45,26 @@
   </main>
   ACA QUEDA OCULTO LO DE SITIO EN CONSTRUCCION
    <!-->
-
-    <div class="container m-5"> 
-  <h2>Productos</h2>
-  <p class="lead">Verás aquí todos los productos de la categoría Autos.</p>
-
-</div>
-  <div class="container">
-    <div class="row">
-      <div class="col text-end">
-        <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
-          <input type="radio" class="btn-check" name="options" id="sortAsc">
-          <label class="btn btn-light" for="sortAsc"><i class="fas fa-sort-amount-down mr-1"></i>$</label>
-          <input type="radio" class="btn-check" name="options" id="sortDesc">
-          <label class="btn btn-light" for="sortDesc"><i class="fas fa-sort-amount-up mr-1"></i>$</label>
-          <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
-          <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1">Rel.</i></label>
-        </div>
+    <main class="pb-5">
+    <div class="container"> 
+      <div class="p-4">
+        <h2 class="mt-5">Productos</h2>
+        <p class="lead">Verás aquí todos los productos de la categoría Autos.</p>
       </div>
-    </div>
+
+      <div class="container ">
+        <div class="row">
+          <div class="col text-end">
+            <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+              <input type="radio" class="btn-check" name="options" id="sortAsc">
+              <label class="btn btn-outline-dark" for="sortAsc"><i class="fas fa-sort-amount-down mr-1"></i>$</label>
+              <input type="radio" class="btn-check" name="options" id="sortDesc">
+              <label class="btn btn-outline-dark" for="sortDesc"><i class="fas fa-sort-amount-up mr-1"></i>$</label>
+              <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
+              <label class="btn btn-secondary" for="sortByCount"><i class="fas fa-sort-amount-down mr-1">Rel.</i></label>
+           </div>
+          </div>
+       </div>
 
     
     <div class="row">
@@ -80,24 +81,23 @@
           </div>
           <div class="col-3 p-0">
             <div class="btn-group" role="group">
-              <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-              <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+              <button class="btn btn-outline-dark btn-block" id="rangeFilterCount">Filtrar</button>
+              <button class="btn btn-outline-dark btn-sm" id="clearRangeFilter">Limpiar</button>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <div class="row">
+    <div class="list-group" id="listaProductos">
+    </div>
+  </div>
 
-<p>
-<ul id="listaProductos">
-  
-</ul>
-
-</p>
 
 </div>
-
+</div>
+</main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -123,4 +123,3 @@
 
 </html>
 
-<!--prueba-->

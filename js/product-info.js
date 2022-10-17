@@ -17,22 +17,47 @@ function mostrarInfoProducto(){
  
    
         htmlContentToAppend += `
-        <h2>${producto.name}</h2>
+        <div class='row'>
+        <div class='col-8'>
+        <h2 class='mt-5'>${producto.name}</h2>
         <br>
         <hr>
         <p id="precio">Precio: ${producto.currency} ${producto.cost}</p>
         <p id="descricpcion">Descripción: ${producto.description}</p>
         <p id="categoria">Categoría: ${producto.category}</p>
         <p id="cantidadDeVendidos">Cantidad de vendido: ${producto.soldCount}</p>
+        </div>
         <p>Imágenes ilustrativas:</p>
-        <div class="col-3">
-      
-                <img src="${producto.images[0]}" class="img-thumbnail">
-                <img src="${producto.images[1]}" class="img-thumbnail">
-                <img src="${producto.images[2]}" class="img-thumbnail">
-                <img src="${producto.images[3]}" class="img-thumbnail">
+        <div class="col-5">
+      <div id="carouselConControles" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+     <div class="carousel-inner rounded">
+        <div class="carousel-item active">
+            <img src="${producto.images[0]}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="${producto.images[1]}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="${producto.images[2]}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="${producto.images[3]}" class="d-block w-100" alt="...">
+        </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselConControles" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselConControles" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+        </button>
+        </div>
                 
                 </div>
+                </div>
+
+
       
         `    
 document.getElementById("infoProducto").innerHTML = htmlContentToAppend;
@@ -59,11 +84,13 @@ function mostrarRelacionados(){
       for(prodRel of productosRelacionados){
         htmlContentToAppend += `
         <div onclick="redireccionar(${prodRel.id})">
+    
         <div class="col-3">
          <img src="${prodRel.image}" class="img-thumbnail">
          </div>
         <p>${prodRel.name}</p>
         </div>
+        
        `    
         document.getElementById("relacionados").innerHTML = htmlContentToAppend;
         }};
@@ -196,3 +223,9 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 
 //aca hago la solicitud de carga con el url de los comentarios, y ejecuto la función 
+
+
+/*  <img src="${producto.images[0]}" class="img-thumbnail">
+                <img src="${producto.images[1]}" class="img-thumbnail">
+                <img src="${producto.images[2]}" class="img-thumbnail">
+                <img src="${producto.images[3]}" class="img-thumbnail">*/

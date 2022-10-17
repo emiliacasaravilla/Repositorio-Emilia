@@ -40,29 +40,32 @@
       </div>
     </div>
   </nav>
-  <div class="container m-5">
-  <p>
-    <ul id="infoProducto">
-      
-    </ul>
-    
-    </p>
 
+  <main class="pb-5">
+    <div class="container"> 
+      <div class="p-4">
+  
 
-    <h3>Comentarios</h3>
+ <div class="row">
+    <div class="list-group" id="infoProducto">
+    </div>
+  </div>
+ 
+
+    <h3 class='mt-5'>Comentarios</h3>
       <ul id="comentarios">
        
       </ul>
 
-    <h3>Comentar</h3>
+    <h3 class='mt-5'>Comentar</h3>
       <p>Tu opinión</p>
 
-      <textarea id="cuerpo"></textarea>
+      <textarea id="cuerpo" class="col-4"></textarea>
 
 
       <p>Tu puntuación</p>
 
-      <select id="puntuacion" name="puntuacion" required>
+      <select id="puntuacion" name="puntuacion" class="col-1" required>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -72,12 +75,12 @@
     <br>
     <br>
 
-      <button>Enviar</button>
+      <button class="btn btn-outline-dark col-1">Enviar</button>
 
          
       <p>
     
-      <h3>Productos relacionados</h3>
+      <h3 class='mt-5'>Productos relacionados</h3>
       <ul id="relacionados">
       
     </ul>
@@ -85,6 +88,8 @@
     </p>
       
 </div>
+</div>
+</main>
  <!--   ACA CREE EL ESPACIO DONDE DESPUES DESDE JS METO LA INFO DEL PRODUCTO
 
   También, enseguida después, puse los controles gráficos que permiten al usuario poner un comentario,
