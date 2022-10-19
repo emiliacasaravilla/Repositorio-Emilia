@@ -81,8 +81,41 @@ mostrarProdCarrito();
 /*ENTREGA 5
 
 
-
 */
 
+/*A PARTIR DE ACA: ENTREGA 6
+*/
 
+function mostrarCostoFinal(){
+  let htmlContentToAppend = "";
+
+  htmlContentToAppend += `
+
+<div class="list-group-item list-group-item-action ">
+<div class="d-flex  justify-content-between">
+<h6>Subtotal</h6>
+<p>USD</p>
+</div>
+</div>
+
+<div class="list-group-item list-group-item-action ">
+<div class="d-flex  justify-content-between">
+<h6>Costo de envío</h6>
+<p>USD</p>
+</div>
+</div>
+
+<div class="list-group-item list-group-item-action">
+<div class="d-flex  justify-content-between">
+<h6>Total</h6>
+<p>USD</p>
+</div>
+</div>
+
+  `
+  document.getElementById("costoFinal").innerHTML = htmlContentToAppend;
+
+};
+
+mostrarCostoFinal();
 

@@ -76,7 +76,7 @@ Dejé un div libre con el id infoProdCarrito, que voy a usar desde el script par
 
 <hr>
 
-<div class="container my-5">
+<div class="container my-4">
 <form>
   <h4>Tipo de envio</h4>
    
@@ -120,7 +120,76 @@ Para seleccionar el tipo de envío uso inputs de tipo radio, que pemiten elegir 
 Para los datos de la dirección de envio, por ahora, un input tipo text o number, según corresponda-->
 
 <hr>
+
+<div class="container my-4">
+  <h4>Costos</h4>
+  <div class="row">
+    <div class="list-group" id="costoFinal">
+    </div>
+  </div>
+  
+
+  <hr>
+
+<div class="container my-4">
+    <h4>Forma de pago</h4>
+  </div>
+
+<button type="button" class="btn btn-outline-dark my-3" data-bs-toggle="modal" data-bs-target="#modalPago">
+  Seleccionar 
+</button>
+
+<div class="modal fade" id="modalPago" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+      <div class="modal-header">
+        <h5 class="modal-title">Forma de pago</h5>
+      </div>
+      <div class="modal-body">
+        <div>
+          <input type="radio" id="credito" name="formaPago">
+          <label for="premium">Tarjeta de credito</label>
+        </div>
+        <hr>
+        <div row class="my-3">
+          <label class='col-5 text-muted'>Número de tarjeta</label>
+          <input class='col-3' type="number" ></input>
+        </div>
+        <div row class="my-3">
+          <label class='col-5 text-muted'>Código de seguridad</label>
+          <input class='col-3' type="number" ></input>
+        </div>
+        <div row class="my-3">
+          <label class='col-5 text-muted'>Vencimiento (MM/AA)</label>
+          <input class='col-3' type="number" ></input>
+        </div>
+
+        <div>
+          <input type="radio" id="transferencia" name="formaPago" >
+          <label for="express" >Transferencia bancaria</label>         
+        </div>
+        <hr>
+        <div row class="my-3">
+          <label class='col-5 text-muted'>Número de cuenta</label>
+          <input class='col-3' type="number" ></input>
+        </div>
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Cerrar</button>
+        
+      
+    </div>
+  </div>
 </div>
+</div>
+<div class="d-grid">
+<button class="btn btn-dark" id="finalizarCompra" type="button">Finalizar compra  </button>
+</div>
+</div>
+
+<div class="alert alert-success" role="alert">
+  Has comprado con exito! </div>
 
 </main>
 
