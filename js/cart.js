@@ -2,9 +2,11 @@
 let productosCarrito = [];
 
 
+
 /*ENTREGA 5
 Creé el array donde voy a guardar la info del producto que está en el json
 */
+
 
 
 document.addEventListener("DOMContentLoaded", function(e){
@@ -14,9 +16,20 @@ document.addEventListener("DOMContentLoaded", function(e){
          productosCarrito = resultado.data.articles[0];
 
           mostrarProdCarrito();
+          mostrarCostoFinal(0.15);
+
+          document.getElementById('premium').addEventListener('click', function(e) {       
+            mostrarCostoFinal(0.15) 
+          });
           
-       
+          document.getElementById('express').addEventListener('click', function(e) {
+            mostrarCostoFinal(0.07)
+          });
           
+          document.getElementById('standard').addEventListener('click', function(e) {
+            mostrarCostoFinal(0.05)  
+          });
+
          }})})
 
 /*ENTREGA 5
@@ -74,6 +87,7 @@ function ajustarSubtotal(productosCarrito) {
 productosCarrito.count = cantidad;
  
 mostrarProdCarrito();
+mostrarCostoFinal(0.15);
 
 };
 
@@ -84,9 +98,25 @@ mostrarProdCarrito();
 */
 
 /*A PARTIR DE ACA: ENTREGA 6
+
+1) ME ESTA FALTANDO LO DE QUE ALGO RECONOZCA QUE OPCION MARCO EL USUARIO EN EL RADIO DE FORMA DE ENVIO
+
+
 */
 
-function mostrarCostoFinal(){
+
+
+
+
+
+
+function mostrarCostoFinal(formaDeEnvio){
+
+  let subTotal = productosCarrito.count * productosCarrito.unitCost;
+  let costoEnvio = subTotal * formaDeEnvio;
+  let total = costoEnvio + subTotal;
+
+ 
   let htmlContentToAppend = "";
 
   htmlContentToAppend += `
@@ -94,21 +124,21 @@ function mostrarCostoFinal(){
 <div class="list-group-item list-group-item-action ">
 <div class="d-flex  justify-content-between">
 <h6>Subtotal</h6>
-<p>USD</p>
+<p> ${subTotal} USD</p>
 </div>
 </div>
 
 <div class="list-group-item list-group-item-action ">
 <div class="d-flex  justify-content-between">
 <h6>Costo de envío</h6>
-<p>USD</p>
+<p> ${costoEnvio} USD</p>
 </div>
 </div>
 
 <div class="list-group-item list-group-item-action">
 <div class="d-flex  justify-content-between">
 <h6>Total</h6>
-<p>USD</p>
+<p>${total} USD</p>
 </div>
 </div>
 
@@ -117,5 +147,37 @@ function mostrarCostoFinal(){
 
 };
 
-mostrarCostoFinal();
 
+/*ENTREGA 6
+
+2) PARTE DOS RESULETA
+
+llamo con el getElementById a los campos del formulario que voy a querer eventualmente deshabilitar
+
+hago una escucha de evento para cuando hagan click en el boton de cada radio, y en cada caso le pongo 
+el atributo de desahbilitar a los inputs que quiero (.disabled) con valor true, y a los que quiero 
+visibles les pongo flase para la situacion en la que el suuario vaya cambiando de opinion
+
+*/
+
+
+
+let infoNumTarjeta = document.getElementById('infoNumTarjeta');
+let infoCodigo = document.getElementById('infoCodigo');
+let infoVencimiento = document.getElementById('infoVencimiento');
+let infoTransferencia = document.getElementById('infoTransferencia');
+
+
+document.getElementById('credito').addEventListener('click', function(e) {
+  infoTransferencia.disabled = true;
+  infoNumTarjeta.disabled = false;
+  infoCodigo.disabled = false;
+  infoVencimiento.disabled = false;
+});
+
+document.getElementById('transferencia').addEventListener('click', function(e) {
+  infoTransferencia.disabled = false;
+  infoNumTarjeta.disabled = true;
+  infoCodigo.disabled = true;
+  infoVencimiento.disabled = true;
+});

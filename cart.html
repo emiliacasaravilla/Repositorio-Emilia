@@ -81,15 +81,15 @@ Dejé un div libre con el id infoProdCarrito, que voy a usar desde el script par
   <h4>Tipo de envio</h4>
    
       <div class='my-4'>
-        <input type="radio" id="premium"
-         name="envio">
+        <input type="radio" id="premium" 
+         name="envio" checked>
         <label for="premium">Premium 2 a 5 días (15%)</label><br>
   
-        <input type="radio" id="express"
+        <input type="radio" id="express" 
          name="envio" >
         <label for="express" >Express 5 a 8 días (7%)</label><br>
   
-        <input type="radio" id="standard"
+        <input type="radio" id="standard" 
          name="envio" >
         <label for="standard">Standard 12 a 15 días (5%)</label><br>
       </div>
@@ -128,7 +128,6 @@ Para los datos de la dirección de envio, por ahora, un input tipo text o number
     </div>
   </div>
   
-
   <hr>
 
 <div class="container my-4">
@@ -151,18 +150,22 @@ Para los datos de la dirección de envio, por ahora, un input tipo text o number
           <label for="premium">Tarjeta de credito</label>
         </div>
         <hr>
+        
+
         <div row class="my-3">
           <label class='col-5 text-muted'>Número de tarjeta</label>
-          <input class='col-3' type="number" ></input>
+          <input id='infoNumTarjeta' class='col-3'  type="number" ></input>
         </div>
         <div row class="my-3">
           <label class='col-5 text-muted'>Código de seguridad</label>
-          <input class='col-3' type="number" ></input>
+          <input id='infoCodigo' class='col-3' type="number" ></input>
         </div>
         <div row class="my-3">
           <label class='col-5 text-muted'>Vencimiento (MM/AA)</label>
-          <input class='col-3' type="number" ></input>
+          <input id='infoVencimiento' class='col-3' type="number" ></input>
         </div>
+        
+      
 
         <div>
           <input type="radio" id="transferencia" name="formaPago" >
@@ -171,7 +174,7 @@ Para los datos de la dirección de envio, por ahora, un input tipo text o number
         <hr>
         <div row class="my-3">
           <label class='col-5 text-muted'>Número de cuenta</label>
-          <input class='col-3' type="number" ></input>
+          <input id='infoTransferencia' class='col-3' type="number"></input>
         </div>
   
       </div>
@@ -188,8 +191,8 @@ Para los datos de la dirección de envio, por ahora, un input tipo text o number
 </div>
 </div>
 
-<div class="alert alert-success" role="alert">
-  Has comprado con exito! </div>
+<div class="alert alert-success" role="alert" disabled>
+  ¡Has comprado con éxito! </div>
 
 </main>
 
