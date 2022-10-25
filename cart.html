@@ -99,7 +99,7 @@ Dejé un div libre con el id infoProdCarrito, que voy a usar desde el script par
   <h4 class='my-4 '>Dirección de envío</h4>
   <div row class="my-3">
   <label class='col-1'>Calle</label>
-  <input class='col-3' type="text" ></input>
+  <input class='col-3 is-valid' type="text" id="calle" ></input>
 </div>
 <div row class="my-3">
   <label class='col-1'>Número</label>
@@ -191,8 +191,7 @@ Para los datos de la dirección de envio, por ahora, un input tipo text o number
 </div>
 </div>
 
-<div class="alert alert-success" role="alert" disabled>
-  ¡Has comprado con éxito! </div>
+<div id="divParaAlerta"></div>
 
 </main>
 

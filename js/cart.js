@@ -181,3 +181,34 @@ document.getElementById('transferencia').addEventListener('click', function(e) {
   infoCodigo.disabled = true;
   infoVencimiento.disabled = true;
 });
+
+
+let xxxxx = document.getElementById("calle").value
+//let alertaExito = document.getElementById('alertaExito');
+
+document.getElementById('finalizarCompra').addEventListener('click', function(e) {
+
+
+
+  let htmlContentToAppend = "";
+
+  htmlContentToAppend += `
+
+  <div class="alert alert-success alert-dismissible fade show"" role="alert" id="alertaExito">
+  ¡Has comprado con éxito! 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+
+  `
+  document.getElementById("divParaAlerta").innerHTML = htmlContentToAppend;
+
+});
+
+
+/*
+
+function validacion(){
+  if (document.getElementById("calle").value.lenght === 0){
+    alert('holi')
+  }
+};   
+*/
