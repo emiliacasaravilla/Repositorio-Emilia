@@ -44,11 +44,9 @@ porque el el producto está guardado dentro de articles como un objeto dentro de
 */
 
 
-
 function mostrarProdCarrito(){
     let htmlContentToAppend = "";
 
-   
         htmlContentToAppend += `
           
   <div class="container">
@@ -92,22 +90,9 @@ mostrarCostoFinal(0.15);
 };
 
 
-/*ENTREGA 5
-
-
-*/
 
 /*A PARTIR DE ACA: ENTREGA 6
-
-1) ME ESTA FALTANDO LO DE QUE ALGO RECONOZCA QUE OPCION MARCO EL USUARIO EN EL RADIO DE FORMA DE ENVIO
-
-
 */
-
-
-
-
-
 
 
 function mostrarCostoFinal(formaDeEnvio){
@@ -150,7 +135,7 @@ function mostrarCostoFinal(formaDeEnvio){
 
 /*ENTREGA 6
 
-2) PARTE DOS RESULETA
+2) PARTE DOS 
 
 llamo con el getElementById a los campos del formulario que voy a querer eventualmente deshabilitar
 
@@ -160,13 +145,10 @@ visibles les pongo flase para la situacion en la que el suuario vaya cambiando d
 
 */
 
-
-
 let infoNumTarjeta = document.getElementById('infoNumTarjeta');
 let infoCodigo = document.getElementById('infoCodigo');
 let infoVencimiento = document.getElementById('infoVencimiento');
 let infoTransferencia = document.getElementById('infoTransferencia');
-
 
 document.getElementById('credito').addEventListener('click', function(e) {
   infoTransferencia.disabled = true;
@@ -183,12 +165,35 @@ document.getElementById('transferencia').addEventListener('click', function(e) {
 });
 
 
-let xxxxx = document.getElementById("calle").value
-//let alertaExito = document.getElementById('alertaExito');
+let formularioDireccion = document.getElementById('formularioDireccion');
+
+let callDireccion =  document.getElementById('callDireccion');
+let numeroDireccion = document.getElementById('numeroDireccion');
+let esquinaDireccion = document.getElementById('esquinaDireccion');
+
+let botonFormaPago = document.getElementById('botonFormaPago');
+
+
+
+function validaciones() {
+
+  if(!formularioDireccion.checkValidity()){
+
+    alert('gugug')
+  }  
+  
+  };
+
 
 document.getElementById('finalizarCompra').addEventListener('click', function(e) {
 
+if(validaciones()){
+  
+  preventDefault()
+  stopPropagation()
 
+
+} else{
 
   let htmlContentToAppend = "";
 
@@ -200,8 +205,29 @@ document.getElementById('finalizarCompra').addEventListener('click', function(e)
 
   `
   document.getElementById("divParaAlerta").innerHTML = htmlContentToAppend;
-
+}
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//let xxxxx = document.getElementById("calle").value
+//let alertaExito = document.getElementById('alertaExito');
+
 
 
 /*
