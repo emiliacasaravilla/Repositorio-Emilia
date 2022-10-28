@@ -1,6 +1,6 @@
 
 let productosCarrito = [];
-
+let costoProducto = undefined;
 
 
 /*ENTREGA 5
@@ -14,8 +14,10 @@ document.addEventListener("DOMContentLoaded", function(e){
 
       if (resultado.status === "ok"){
          productosCarrito = resultado.data.articles[0];
+         
 
           mostrarProdCarrito();
+          costoEnDolares();
           mostrarCostoFinal(0.15);
 
           document.getElementById('premium').addEventListener('click', function(e) {       
@@ -95,9 +97,20 @@ mostrarCostoFinal(0.15);
 */
 
 
+
+function costoEnDolares(){
+ //for (producto of productosCarrito){
+  if(productosCarrito.currency === 'USD'){
+    costoProducto = productosCarrito.unitCost;
+  } else {
+costoProducto = (productosCarrito.unitCost)*41;
+  }
+ } ;  
+
+
 function mostrarCostoFinal(formaDeEnvio){
 
-  let subTotal = productosCarrito.count * productosCarrito.unitCost;
+  let subTotal = productosCarrito.count * costoProducto;
   let costoEnvio = subTotal * formaDeEnvio;
   let total = costoEnvio + subTotal;
 
@@ -141,40 +154,118 @@ llamo con el getElementById a los campos del formulario que voy a querer eventua
 
 hago una escucha de evento para cuando hagan click en el boton de cada radio, y en cada caso le pongo 
 el atributo de desahbilitar a los inputs que quiero (.disabled) con valor true, y a los que quiero 
-visibles les pongo flase para la situacion en la que el suuario vaya cambiando de opinion
+visibles les pongo false para la situación en la que el usuario vaya cambiando de opinión
 
 */
 
 let infoNumTarjeta = document.getElementById('infoNumTarjeta');
 let infoCodigo = document.getElementById('infoCodigo');
 let infoVencimiento = document.getElementById('infoVencimiento');
-let infoTransferencia = document.getElementById('infoTransferencia');
+let infoNumeroCuenta = document.getElementById('infoNumeroCuenta');
 
 document.getElementById('credito').addEventListener('click', function(e) {
-  infoTransferencia.disabled = true;
+  infoNumeroCuenta.disabled = true;
   infoNumTarjeta.disabled = false;
   infoCodigo.disabled = false;
   infoVencimiento.disabled = false;
 });
 
 document.getElementById('transferencia').addEventListener('click', function(e) {
-  infoTransferencia.disabled = false;
+  infoNumeroCuenta.disabled = false;
   infoNumTarjeta.disabled = true;
   infoCodigo.disabled = true;
   infoVencimiento.disabled = true;
 });
 
 
-let formularioDireccion = document.getElementById('formularioDireccion');
-
-let callDireccion =  document.getElementById('callDireccion');
+let calleDireccion =  document.getElementById('calleDireccion');
 let numeroDireccion = document.getElementById('numeroDireccion');
 let esquinaDireccion = document.getElementById('esquinaDireccion');
 
 let botonFormaPago = document.getElementById('botonFormaPago');
 
+let formularioEnvio = document.getElementById('formularioEnvio');
 
 
+function validaciones(form, event) {
+  
+  if (!form.checkValidity() /*|| !formularioEnvio.checked*/ ) {
+    event.preventDefault()
+    event.stopPropagation()
+  
+  } else{
+    
+    document.getElementById('alertaExito').classList.add('show');
+  }
+  form.classList.add('was-validated')
+  
+};
+
+
+document.getElementById('finalizarCompra').addEventListener('click', function(e) {
+  let formularioDireccion = document.getElementById('formularioDireccion');
+  let infoTransferencia = document.getElementById('infoTransferencia');
+  let infoCredito = document.getElementById('infoCredito');
+  validaciones (formularioDireccion, e);
+  //validaciones (infoTransferencia, e);
+  //validaciones (infoCredito, e);
+  //validaciones (formularioEnvio, e);
+
+});
+
+
+/*
+
+function validar(form, e) {
+    let flag = true;
+    e.preventDefault();
+    e.stopPropagation();
+    if (!form.checkValidity()) {
+        flag = false;
+    }
+    form.classList.add("was-validated");
+    return flag
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  let formularioDireccion = document.getElementById('formularioDireccion');
+  let finalizarCompra = document.getElementById('finalizarCompra');
+ 
+  finalizarCompra.addEventListener("submit", function (e) {
+       if (validar(formularioDireccion, e)) {
+            alert('holi')
+        }
+    });
+});
+
+
+
+
+function validar(form, e) {
+    let flag = true;
+    e.preventDefault();
+    e.stopPropagation();
+    if (!form.checkValidity()) {
+        flag = false;
+    }
+    form.classList.add("was-validated");
+    return flag
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    let loginForm = document.getElementById("loginForm");
+    loginForm.addEventListener("submit", function (e) {
+        if (validar(loginForm, e)) {
+            let email = document.getElementById('inputEmail').value;
+            localStorage.setItem('email', email);
+            window.location = 'index.html';
+        }
+    });
+});
+*/
+
+
+/*
 function validaciones() {
 
   if(!formularioDireccion.checkValidity()){
@@ -183,6 +274,45 @@ function validaciones() {
   }  
   
   };
+
+
+  function validar(form, e) {
+    let flag = true;
+    e.preventDefault();
+    e.stopPropagation();
+
+    
+    if (!form.checkValidity()) {
+        flag = false;
+    }
+    form.classList.add("was-validated");
+    return flag
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    let formularioEnvio = document.getElementById("formularioEnvio");
+    finalizarCompra.addEventListener("submit", function (e) {
+        if (validar(formularioEnvio, e)) {
+          let htmlContentToAppend = "";
+
+  htmlContentToAppend += `
+
+  <div class="alert alert-success alert-dismissible fade show"" role="alert" id="alertaExito">
+  ¡Has comprado con éxito! 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+
+  `
+  document.getElementById("divParaAlerta").innerHTML = htmlContentToAppend;  
+        }
+    });
+});
+
+
+*/
+
+
+
+/*
 
 
 document.getElementById('finalizarCompra').addEventListener('click', function(e) {
@@ -207,7 +337,7 @@ if(validaciones()){
   document.getElementById("divParaAlerta").innerHTML = htmlContentToAppend;
 }
 });
-
+*/
 
 
 

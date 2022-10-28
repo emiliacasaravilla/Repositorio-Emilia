@@ -77,47 +77,60 @@ Dejé un div libre con el id infoProdCarrito, que voy a usar desde el script par
 <hr>
 
 <div class="container my-4">
-<form id="formularioDireccion" action="#" method="get" novalidate>
+
+
+  
+ 
+
+<form id="formularioEnvio" class="needs-validation" novalidate>
   <h4>Tipo de envio</h4>
    
       <div class='my-4'>
         <input type="radio" id="premium" 
-         name="envio" checked>
+         name="envio" required>
         <label for="premium">Premium 2 a 5 días (15%)</label><br>
   
         <input type="radio" id="express" 
-         name="envio" >
+         name="envio" required>
         <label for="express" >Express 5 a 8 días (7%)</label><br>
   
         <input type="radio" id="standard" 
-         name="envio" >
+         name="envio" required>
         <label for="standard">Standard 12 a 15 días (5%)</label><br>
       </div>
+      <div class="invalid-feedback">
+        Debes aceptar los términos y condiciones del servicio.
+      </div>  
+      </form>
 
-   
+  <form id="formularioDireccion" class="needs-validation" novalidate>
   
   <h4 class='my-4 '>Dirección de envío</h4>
-  <div row class="my-3">
+
+  <div row class="my-3 col-3">
   <label class='col-1'>Calle</label>
-  <input class='col-3 is-valid' type="text" id="calleDireccion" required></input>
+  <input class='form-control' type="text" id="calleDireccion" required></input>
   <div class="invalid-feedback">
     Debe ingresar una calle.
   </div>
 </div>
-<div row class="my-3">
+
+<div row class="my-3 col-3">
   <label class='col-1'>Número</label>
-  <input class='col-3' type="number" id="numeroDireccion" required></input>
+  <input class='form-control ' type="number" id="numeroDireccion" required></input>
   <div class="invalid-feedback">
     Debe ingresar un número de puerta.
   </div>
 </div>
-<div row class="my-3">
+
+<div row class="my-3 col-3">
   <label class='col-1'>Esquina</label>
-  <input class='col-3'type="text" id="esquinaDireccion" required></input>
+  <input class='form-control'type="text" id="esquinaDireccion" required></input>
   <div class="invalid-feedback">
     Debe ingresar una esquina.
   </div>
 </div>
+
 </form>
 
 </div>
@@ -160,20 +173,29 @@ Para los datos de la dirección de envio, por ahora, un input tipo text o number
         </div>
         <hr>
         
-
+      <form id="infoCredito" class="needs-validation" novalidate>
         <div row class="my-3">
           <label class='col-5 text-muted'>Número de tarjeta</label>
           <input id='infoNumTarjeta' class='col-3'  type="number" ></input>
+          <div class="invalid-feedback">
+            Debe ingresar número de tarjeta.
+          </div>
         </div>
         <div row class="my-3">
           <label class='col-5 text-muted'>Código de seguridad</label>
           <input id='infoCodigo' class='col-3' type="number" ></input>
+          <div class="invalid-feedback">
+            Debe ingresar código de seguirdad.
+          </div>
         </div>
         <div row class="my-3">
           <label class='col-5 text-muted'>Vencimiento (MM/AA)</label>
           <input id='infoVencimiento' class='col-3' type="number" ></input>
+          <div class="invalid-feedback">
+            Debe ingresar fecha de vencimiento.
+          </div>
         </div>
-        
+      </form> 
       
 
         <div>
@@ -181,10 +203,15 @@ Para los datos de la dirección de envio, por ahora, un input tipo text o number
           <label for="express" >Transferencia bancaria</label>         
         </div>
         <hr>
+        <form id="infoTransferencia" class="needs-validation" novalidate>
         <div row class="my-3">
           <label class='col-5 text-muted'>Número de cuenta</label>
-          <input id='infoTransferencia' class='col-3' type="number"></input>
+          <input id='infoNumeroCuenta' class='col-3' type="number"></input>
+          <div class="invalid-feedback">
+            Debe ingresar número de cuenta.
+          </div>
         </div>
+        </form>
   
       </div>
       <div class="modal-footer">
@@ -196,11 +223,16 @@ Para los datos de la dirección de envio, por ahora, un input tipo text o number
 </div>
 </div>
 <div class="d-grid">
-<button class="btn btn-dark" id="finalizarCompra" type="button">Finalizar compra  </button>
+<input type="submit" class="btn btn-dark" id="finalizarCompra" value="Finalizar">
 </div>
 </div>
 
-<div id="divParaAlerta"></div>
+
+
+<div id="alertaExito" class="alert alert-success alert-dismissible fade" role="alert">
+  <p id="textoAlerta">¡Has comprado con éxito!</p>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 
 </main>
 
