@@ -93,13 +93,14 @@ mostrarCostoFinal(0.15);
 
 
 
-/*A PARTIR DE ACA: ENTREGA 6
-*/
+//ENTREGA 6 - PARTE 1
 
 
+//funcion para chequear si está en dolares la currency, si está dejar el costo igual, 
+//y si no (por lo cual estaría en pesos) pasarlo a dolares con una multiplicación
 
 function costoEnDolares(){
- //for (producto of productosCarrito){
+ //si hubiese mas productos habria que recorrer con un for
   if(productosCarrito.currency === 'USD'){
     costoProducto = productosCarrito.unitCost;
   } else {
@@ -107,6 +108,7 @@ costoProducto = (productosCarrito.unitCost)*41;
   }
  } ;  
 
+ //función para mostrar el costo final que toma la forma de envio como parametro
 
 function mostrarCostoFinal(formaDeEnvio){
 
@@ -146,9 +148,7 @@ function mostrarCostoFinal(formaDeEnvio){
 };
 
 
-/*ENTREGA 6
-
-2) PARTE DOS 
+/*ENTREGA 6 - PARTE 2 
 
 llamo con el getElementById a los campos del formulario que voy a querer eventualmente deshabilitar
 
@@ -178,193 +178,44 @@ document.getElementById('transferencia').addEventListener('click', function(e) {
 });
 
 
-let calleDireccion =  document.getElementById('calleDireccion');
-let numeroDireccion = document.getElementById('numeroDireccion');
-let esquinaDireccion = document.getElementById('esquinaDireccion');
-
-let botonFormaPago = document.getElementById('botonFormaPago');
-
-let formularioEnvio = document.getElementById('formularioEnvio');
+//ENTREGA 6 - PARTE 3
 
 
-function validaciones(form, event) {
+
+function validaciones(evento) {
   
-  if (!form.checkValidity() /*|| !formularioEnvio.checked*/ ) {
-    event.preventDefault()
-    event.stopPropagation()
-  
+  if (!formularioDireccion.checkValidity() || !formularioTransferencia.checkValidity() || !formularioCredito.checkValidity() || !document.querySelector('input[name="envio"]:checked') || !document.querySelector('input[name="formaPago"]:checked')) {
+    evento.preventDefault()
+    evento.stopPropagation()
   } else{
-    
     document.getElementById('alertaExito').classList.add('show');
   }
-  form.classList.add('was-validated')
-  
+  formularioDireccion.classList.add('was-validated');
+  formularioCredito.classList.add('was-validated');
+  formularioTransferencia.classList.add('was-validated');
 };
 
 
 document.getElementById('finalizarCompra').addEventListener('click', function(e) {
-  let formularioDireccion = document.getElementById('formularioDireccion');
-  let infoTransferencia = document.getElementById('infoTransferencia');
-  let infoCredito = document.getElementById('infoCredito');
-  validaciones (formularioDireccion, e);
-  //validaciones (infoTransferencia, e);
-  //validaciones (infoCredito, e);
-  //validaciones (formularioEnvio, e);
 
-});
-
-
-/*
-
-function validar(form, e) {
-    let flag = true;
-    e.preventDefault();
-    e.stopPropagation();
-    if (!form.checkValidity()) {
-        flag = false;
-    }
-    form.classList.add("was-validated");
-    return flag
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  let formularioDireccion = document.getElementById('formularioDireccion');
-  let finalizarCompra = document.getElementById('finalizarCompra');
- 
-  finalizarCompra.addEventListener("submit", function (e) {
-       if (validar(formularioDireccion, e)) {
-            alert('holi')
-        }
-    });
-});
-
-
-
-
-function validar(form, e) {
-    let flag = true;
-    e.preventDefault();
-    e.stopPropagation();
-    if (!form.checkValidity()) {
-        flag = false;
-    }
-    form.classList.add("was-validated");
-    return flag
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    let loginForm = document.getElementById("loginForm");
-    loginForm.addEventListener("submit", function (e) {
-        if (validar(loginForm, e)) {
-            let email = document.getElementById('inputEmail').value;
-            localStorage.setItem('email', email);
-            window.location = 'index.html';
-        }
-    });
-});
-*/
-
-
-/*
-function validaciones() {
-
-  if(!formularioDireccion.checkValidity()){
-
-    alert('gugug')
-  }  
-  
-  };
-
-
-  function validar(form, e) {
-    let flag = true;
-    e.preventDefault();
-    e.stopPropagation();
-
+  if(!document.querySelector('input[name="formaPago"]:checked')){
     
-    if (!form.checkValidity()) {
-        flag = false;
-    }
-    form.classList.add("was-validated");
-    return flag
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    let formularioEnvio = document.getElementById("formularioEnvio");
-    finalizarCompra.addEventListener("submit", function (e) {
-        if (validar(formularioEnvio, e)) {
-          let htmlContentToAppend = "";
-
-  htmlContentToAppend += `
-
-  <div class="alert alert-success alert-dismissible fade show"" role="alert" id="alertaExito">
-  ¡Has comprado con éxito! 
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
-
-  `
-  document.getElementById("divParaAlerta").innerHTML = htmlContentToAppend;  
-        }
-    });
-});
-
-
-*/
-
-
-
-/*
-
-
-document.getElementById('finalizarCompra').addEventListener('click', function(e) {
-
-if(validaciones()){
+    formaPagoFeedback.style.display = 'inline';
   
-  preventDefault()
-  stopPropagation()
+  }else{
 
+    formaPagoFeedback.style.display = 'none';
+    if(!formularioTransferencia.checkValidity() || !formularioCredito.checkValidity() ){   
+      infoPagoFeedback.style.display = 'inline';
+    } else{     
+      infoPagoFeedback.style.display = 'none'; 
+    }
+  } 
 
-} else{
+  validaciones(e);
 
-  let htmlContentToAppend = "";
-
-  htmlContentToAppend += `
-
-  <div class="alert alert-success alert-dismissible fade show"" role="alert" id="alertaExito">
-  ¡Has comprado con éxito! 
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
-
-  `
-  document.getElementById("divParaAlerta").innerHTML = htmlContentToAppend;
-}
 });
-*/
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//let xxxxx = document.getElementById("calle").value
-//let alertaExito = document.getElementById('alertaExito');
-
-
-
-/*
-
-function validacion(){
-  if (document.getElementById("calle").value.lenght === 0){
-    alert('holi')
-  }
-};   
-*/
