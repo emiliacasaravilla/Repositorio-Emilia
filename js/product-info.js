@@ -18,17 +18,34 @@ function mostrarInfoProducto(){
    
         htmlContentToAppend += `
         <div class='row'>
-        <div class='col-8'>
+        <div class='col-12 col-lg-6'>
         <h2 class='mt-5'>${producto.name}</h2>
-        <br>
-        <hr>
-        <p id="precio">Precio: ${producto.currency} ${producto.cost}</p>
-        <p id="descricpcion">Descripción: ${producto.description}</p>
-        <p id="categoria">Categoría: ${producto.category}</p>
-        <p id="cantidadDeVendidos">Cantidad de vendido: ${producto.soldCount}</p>
+       <hr>
+       
+   
+            <p class='mb-lg-5 '>${producto.description}</p>
+       
+            
+        <table class="table table-secondary my-5 ">
+        <tbody>
+          <tr>         
+            <td>Precio:</td>
+            <td>${producto.currency} ${producto.cost}</td>
+          </tr>
+                   <tr>   
+            <td >Categoría:</td>
+            <td>${producto.category}</td>
+          </tr>
+          <tr>      
+            <td>Cantidad de vendido:</td>
+            <td>${producto.soldCount}</td>
+          </tr>
+        </tbody>
+         </table>
         </div>
-        <p>Imágenes ilustrativas:</p>
-        <div class="col-5">
+
+        
+        <div class="col-12 col-lg-6 my-3">
       <div id="carouselConControles" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
      <div class="carousel-inner rounded">
         <div class="carousel-item active">
@@ -81,19 +98,17 @@ function redireccionar (id){
 
 function mostrarRelacionados(){
      let htmlContentToAppend = "";
-      for(prodRel of productosRelacionados){
+     for(prodRel of productosRelacionados){
         htmlContentToAppend += `
-        <div onclick="redireccionar(${prodRel.id})">
-    
-        <div class="col-3">
-         <img src="${prodRel.image}" class="img-thumbnail">
-         </div>
-        <p>${prodRel.name}</p>
+    <div onclick="redireccionar(${prodRel.id})">
+        <div class="col-12 col-lg-5">
+            <img src="${prodRel.image}" class="img-thumbnail">
         </div>
-        
+        <p>${prodRel.name}</p>
+    </div>
        `    
-        document.getElementById("relacionados").innerHTML = htmlContentToAppend;
-        }};
+    document.getElementById("relacionados").innerHTML = htmlContentToAppend;
+ } };
         
 
 
@@ -144,9 +159,20 @@ function mostrarComentarios() {
        
         htmlContentToAppend += `
      
-        <p>${comentario.user} - ${comentario.dateTime} - ${estrellas(comentario)}
+       
 
-        <p>${comentario.description}
+        <div class="list-group-item list-group-item-action cursor-active mt-4">
+        <div class="row">
+              <div class="col">
+                <div class="row">
+                 <p class="col-lg-10 col-md-9"><strong>${comentario.user}</strong> - ${comentario.dateTime}</p>
+                 <p class="col-md-3 col-lg-2">${estrellas(comentario)}</p>
+                <p>${comentario.description}</p>
+            </div>
+        </div>
+    </div>
+    </div>
+
 
         ` 
         document.getElementById("comentarios").innerHTML = htmlContentToAppend;
@@ -225,7 +251,3 @@ document.addEventListener("DOMContentLoaded", function(e){
 //aca hago la solicitud de carga con el url de los comentarios, y ejecuto la función 
 
 
-/*  <img src="${producto.images[0]}" class="img-thumbnail">
-                <img src="${producto.images[1]}" class="img-thumbnail">
-                <img src="${producto.images[2]}" class="img-thumbnail">
-                <img src="${producto.images[3]}" class="img-thumbnail">*/
