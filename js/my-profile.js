@@ -1,17 +1,60 @@
+//Entrega 7
+
+//traigo el mail (identificador de usuario) que está en el local storage
 let email = localStorage.getItem('nombreUsuario');
 
 
+//función que se encarga de poner el mail en su inputs correspondiente, y si lo hubiera porque el usuario 
+//ya cargó sus datos en el perfil, muestra en pantalla esos datos (almacenados en el local storage)
 function ponerDatos (){
-    document.getElementById("email").value = email;
+  document.getElementById("email").value = email;
   
-   document.getElementById("nombre").value = localStorage.getItem('nombre');
-   document.getElementById("apellido").value = localStorage.getItem('apellido');
-   document.getElementById("segundoApellido").value = localStorage.getItem('segundoApellido');
-   document.getElementById("segundoNombre").value = localStorage.getItem('segundoNombre');
-   document.getElementById("telefono").value = localStorage.getItem('telefono');
+  document.getElementById("nombre").value = localStorage.getItem('nombre');
+  document.getElementById("apellido").value = localStorage.getItem('apellido');
+  document.getElementById("segundoApellido").value = localStorage.getItem('segundoApellido');
+  document.getElementById("segundoNombre").value = localStorage.getItem('segundoNombre');
+  document.getElementById("telefono").value = localStorage.getItem('telefono');
 }
 
 
+// la función validaciones chequea que los inputs obligatorios del form están completos
+//si no es así muestra aviso de que faltan y corta el evento
+//de lo contrario (o sea, si los datos necesarios están), llama a la función guardar info
+function validaciones(evento) {
+  
+  if (!infoPerfil.checkValidity()) {
+    evento.preventDefault()
+    evento.stopPropagation()
+  } else{
+    guardarInfo ()
+  }
+  infoPerfil.classList.add('was-validated');
+    };
+
+
+//la función guardarInfo guarda en una variable el value que el usuario haya puesto en los inputs
+//y almacena en el local sotrage cada valor, con un nombre que identifique ese dato   
+function guardarInfo () {
+  let nombre= document.getElementById("nombre").value ;
+  let segundoNombre= document.getElementById("segundoNombre").value ;
+  let apellido = document.getElementById("apellido").value
+  let segundoApellido= document.getElementById("segundoApellido").value ;
+  let telefono= document.getElementById("telefono").value ;
+  
+  localStorage.setItem('nombre', nombre);
+  localStorage.setItem('apellido', apellido);
+  localStorage.setItem('segundoNombre', segundoNombre);
+  localStorage.setItem('segundoApellido', segundoApellido);
+  localStorage.setItem('telefono', telefono);  
+}
+
+
+//la función de acceder al perfil hace varias cosas:
+//para empzar chequea si el usuario está logueado, revisando ese dato en e local sotage
+//si está logeado: muestra el form con los datos del perfil, y llama a la función que carga los datos almacenados
+//también agrego acá la escucha de envento para el botón de "guardar cambios", 
+//que lo que hace es llamar a la función validaciones
+//si el usuario no está logueado se mestra en pantalla la alerta, que ofrece botón para ir a logearse
 function accederPerfil (){
   if(email != undefined) {
       document.addEventListener("DOMContentLoaded", function (){
@@ -83,36 +126,8 @@ let htmlContentToAppend = "";
   }}
 
 
- 
-function validaciones(evento) {
-  
-  if (!infoPerfil.checkValidity()) {
-    evento.preventDefault()
-    evento.stopPropagation()
-  } else{
-    guardarInfo ()
-  }
-  infoPerfil.classList.add('was-validated');
-    };
 
-
-    
-function guardarInfo () {
-  let nombre= document.getElementById("nombre").value ;
-  let segundoNombre= document.getElementById("segundoNombre").value ;
-  let apellido = document.getElementById("apellido").value
-  let segundoApellido= document.getElementById("segundoApellido").value ;
-  let telefono= document.getElementById("telefono").value ;
-  
-  localStorage.setItem('nombre', nombre);
-  localStorage.setItem('apellido', apellido);
-  localStorage.setItem('segundoNombre', segundoNombre);
-  localStorage.setItem('segundoApellido', segundoApellido);
-  localStorage.setItem('telefono', telefono);
-  
-}
-
-
+//finalmente llamamos a la función accederPerfil
 accederPerfil();
 
 

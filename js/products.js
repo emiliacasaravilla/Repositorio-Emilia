@@ -93,29 +93,7 @@ function mostrarProductos(){
         `
     }
 
-
-
-
-    /*
-            htmlContentToAppend += `
-            <div onclick="setCatID(${productos.id})" class="list-group-item list-group-item-action cursor-active">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="${productos.image}" alt="${productos.description}" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">${productos.name} - ${productos.currency} ${productos.cost} </h4>
-                            <small class="text-muted">${productos.soldCount} artículos</small>
-                        </div>
-                        <p class="mb-1">${productos.description}</p>
-                    </div>
-                </div>
-            </div>
-            `
-        }
-*/
-        document.getElementById("listaProductos").innerHTML = htmlContentToAppend;
+       document.getElementById("listaProductos").innerHTML = htmlContentToAppend;
      
 
     }};
@@ -156,24 +134,21 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         document.getElementById("rangeFilterCount").addEventListener('click', function () {
 
-     /*       if (document.getElementById("rangeFilterCountMin").value != "") {
-                precioMin = parseInt(document.getElementById("rangeFilterCountMin").value);
+            if (document.getElementById("rangeFilterCountMin").value != "") {
+                precioMin = document.getElementById("rangeFilterCountMin").value;
             }else{
                 precioMin = undefined;
             }
     
             if (document.getElementById("rangeFilterCountMax").value != "") {
-                precioMax = parseInt(document.getElementById("rangeFilterCountMax").value);
+                precioMax = document.getElementById("rangeFilterCountMax").value;
             }else{
                 precioMax = undefined;
             }
             mostrarProductos();
-        }) */
+        }) 
         
-            precioMin = document.getElementById("rangeFilterCountMin").value;
-            precioMax = document.getElementById("rangeFilterCountMax").value;
-            mostrarProductos();
-        
+            
             }) ;
 
 //Le agregué a la solicitud de carga una escucha de evento para el botón FILTRO, 
@@ -217,89 +192,5 @@ document.getElementById("sortByCount").addEventListener("click", function(){
 //Cada uno de los tres botones que sirven para ordenar, con una escucha de evento, ejecutan la función
 //declarada más arriba que ordena y muestra los productos.
 
-})});
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-BORRADOR BASADO EN CATEGORYS PARA USAR CON EL MÉTODO SORT
-acá, más arriba, hice una versión simplificada de esta función ya que como lo que estaba comaprando era números
-y no letras, como en el caso de categorys, era más fácil hacer una resta y listo, que diera positivo, negativo o igual
-
-
-function sortProductos(criterio, array){
-    let resultado = [];
-    if (criterio === ordenarPorPrecioAsc )
-    {
-        resultado = array.sort(function(a, b) {
-            if ( parseInt(a.cost) < parseInt(b.cost) ){ return -1; }
-            if ( parseInt(a.cost) > parseInt(b.cost) ){ return 1; }
-            return 0;
-        });
-    }else if (criterio === ordenarPorPrecioDesc){
-        resultado = array.sort(function(a, b) {
-            if ( parseInt(a.cost) > parseInt(b.cost) ){ return -1; }
-            if ( parseInt(a.cost) < parseInt(b.cost) ){ return 1; }
-            return 0;
-        });
-    }else if (criterio === ordenarPorRelevanciaDesc){
-       resultado = array.sort(function(a, b) {
-           let aCount = parseInt(a.soldCount);
-           let bCount = parseInt(b.soldCount);
-
-            if ( aCount > bCount ){ return -1; }
-            if ( aCount < bCount ){ return 1; }
-           return 0;
-        });
-    }
-
-    
-    return resultado;
-}*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//document.addEventListener("DOMContentLoaded", function(e){
-   // getJSONData(PRODUCTS_URL + localStorage.getItem('catID') + ".json").then(function(resultado){
-     
-       // if (resultado.status === "ok"){
-           // arrayCantidadDeProductos = resultado.data.products.soldCount;
-//
-          
-        
-    //    }
-   // })});
-
-
-//let filtroCantidad = arrayCantidadDeProductos.filter(number => number > minCount && number < maxCount );
-   
