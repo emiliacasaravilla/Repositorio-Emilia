@@ -2,6 +2,7 @@
 let productosCarrito = [];
 let costoProducto = undefined;
 
+//let nuevoProductoCarrito = localStorage.getItem('carrito');
 
 /*ENTREGA 5
 Creé el array donde voy a guardar la info del producto que está en el json
@@ -33,6 +34,9 @@ document.addEventListener("DOMContentLoaded", function(e){
           });
 
          }})})
+
+
+         
 
 /*ENTREGA 5
 -Hice una solicitud de carga con el url de CART INFO que estaba en init y lo concatené con el id 
@@ -179,7 +183,6 @@ document.getElementById('transferencia').addEventListener('click', function(e) {
 
 
 //ENTREGA 6 - PARTE 3
-
 
 
 function validaciones(evento) {

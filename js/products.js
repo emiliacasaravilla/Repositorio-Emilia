@@ -19,6 +19,7 @@ function redireccionar (id){
     localStorage.setItem("id", id)
     window.location = "product-info.html";
 }
+
 //Entrega 3
 //armé la función redireccionar que toma como parámetro el id del producto, y lo que hace la función
 //es, primero guardar el id en el local storage
@@ -117,6 +118,27 @@ function sortYMostrarProductos(sortCriterio, arrayProductos){
 //Esta función toma como perámetros el criterio y el array de productos y lo que hace, usando a función que
 //declaré más arriba, es aplicar el método sort, que ordena los elementos de un array
 //Y luego ejecuta la función de mostrar productos
+
+//HAY QUE ARREGLAR ESTO, NO FUNCIONA, DESAFIO 2
+function buscarProductos(){
+    let productosEncontrados= undefined;
+    for (let productos of arrayProductos){
+
+        if(productos.title.toLowerCase().indexOf(contenidoBuscador.toLowerCase()) > -1){
+            productosEncontrados.push(productos)
+        }
+
+        arrayProductos = productosEncontrados;
+        mostrarProductos();
+        console.log(productosEncontrados)
+}}
+
+document.getElementById("btnBuscar").addEventListener('click', function () {
+
+    buscarProductos()
+
+
+});
     
 
 document.addEventListener("DOMContentLoaded", function(e){

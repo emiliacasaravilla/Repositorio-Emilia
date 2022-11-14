@@ -251,3 +251,16 @@ document.addEventListener("DOMContentLoaded", function(e){
 //aca hago la solicitud de carga con el url de los comentarios, y ejecuto la función 
 
 
+document.getElementById('agregarCarrito').addEventListener('click', function() {
+    let productoCarrito = undefined;
+    
+    productoCarrito = producto.id;
+
+console.log(productoCarrito);
+   
+localStorage.setItem('carrito', productoCarrito);
+
+  
+}
+
+  );

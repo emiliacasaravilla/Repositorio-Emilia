@@ -65,10 +65,10 @@
           <div class="col offset-lg-4 text-end">
             <p class="font-weight-normal text-end my-1">Precio</p>
           </div>
-          <div class="col-3 col-lg-2 text-end">
+          <div class="col-3 col-lg-2 text-end p-0">
             <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
           </div>
-          <div class="col-3 col-lg-2 text-end">
+          <div class="col-3 col-lg-2 text-end p-0">
             <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
           </div>
           <div class="col p-0">
@@ -77,10 +77,19 @@
               <button class="btn btn-outline-dark btn-sm" id="clearRangeFilter">Limpiar</button>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
 
+          <div class="row justify-content-end ">
+          <div class="col-9">
+          <input type="search" class="form-control col-lg-5" name="buscar" id="inputBuscar" placeholder="Escriba el nombre del producto">
+        </div>
+        <div class='col-3'><button class="btn btn-secondary m-2" id="btnBuscar">Buscar</button>
+        </div> 
+      </div>
+      </div>
+      </div> 
+      </div>
+     </div>
+    
     <div class="row">
     <div class="list-group" id="listaProductos">
     </div>
