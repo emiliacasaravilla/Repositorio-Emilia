@@ -11,8 +11,7 @@ const ordenarPorPrecioDesc = "precioAs";
 const ordenarPorPrecioAsc = "precioDes";
 const ordenarPorRelevanciaDesc = "Relev";
 
-let productosEncontrados=[];
-let search = undefined;
+
 
 //declaré las variables: arrays de productos (la original y la qye se va a ir actualizando al hacer el sort) 
 //y por otrolado las que me van ayudar a setear el criterio para el sort
@@ -122,29 +121,6 @@ function sortYMostrarProductos(sortCriterio, arrayProductos){
 //declaré más arriba, es aplicar el método sort, que ordena los elementos de un array
 //Y luego ejecuta la función de mostrar productos
 
-//HAY QUE ARREGLAR ESTO, NO FUNCIONA, DESAFIO 2
-//function buscarProductos(){
-    
-   // for (let productos of arrayProductos){
-
-   //    if(productos.title.toLowerCase().indexOf(contenidoBuscador.toLowerCase()) > -1){
-            productosEncontrados.push(productos)
-    //      
-   //     }
- //
-    //    arrayProductos = productosEncontrados;
-    //   mostrarProductos();
-//        console.log(productosEncontrados)
-//}}
-
-
-
-//document.getElementById("btnBuscar").addEventListener('click', function () {
- //  buscarProductos()
-//console.log(productosEncontrados)
-//});
-
-
 
     
 
@@ -222,11 +198,7 @@ document.getElementById("sortByCount").addEventListener("click", function(){
 //Cada uno de los tres botones que sirven para ordenar, con una escucha de evento, ejecutan la función
 //declarada más arriba que ordena y muestra los productos.
 
-document.getElementById("inputBuscar").addEventListener("input", function () {
-                search = document.getElementById("inputBuscar").value;
-                mostrarProductos();
-            })
-            //ESTO DE AC[A ARRIBA SERIA PAAR EL BUSCADOR, QUE NO ANDAs]
+
 
 })
 //};

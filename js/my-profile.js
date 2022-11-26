@@ -56,11 +56,18 @@ document.querySelector('#cargarFoto').addEventListener("change", function(){
   const reader = new FileReader();
   reader.addEventListener("load", () => { 
   localStorage.setItem('foto', reader.result); 
+  
   });
   reader.readAsDataURL(this.files[0]);
+
   });
   
-
+function ponerFoto (){
+  const dataFoto = localStorage.getItem('foto');
+  if (dataFoto){
+    document.getElementById('foto').setAttribute('scr', dataFoto)
+  }
+}
 
 
 
@@ -132,6 +139,7 @@ let htmlContentToAppend = "";
   document.getElementById("formularioPerfil").innerHTML = htmlContentToAppend;
 
   ponerDatos();
+  ponerFoto();
 
   document.getElementById('guardarCambios').addEventListener('click', function(e) {    
     validaciones(e);
@@ -141,12 +149,8 @@ let htmlContentToAppend = "";
       document.getElementById('alertaPerfil').classList.add('show');
   }
 
-  const dataFoto = localStorage.getItem('foto');
-  if (dataFoto){
-    document.querySelector('#foto').setAttribute('scr', dataFoto)
-  }
   
-
+  
 
 }
 
