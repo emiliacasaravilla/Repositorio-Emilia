@@ -17,6 +17,7 @@ function ponerDatos (){
 }
 
 
+
 // la función validaciones chequea que los inputs obligatorios del form están completos
 //si no es así muestra aviso de que faltan y corta el evento
 //de lo contrario (o sea, si los datos necesarios están), llama a la función guardar info
@@ -47,6 +48,21 @@ function guardarInfo () {
   localStorage.setItem('segundoApellido', segundoApellido);
   localStorage.setItem('telefono', telefono);  
 }
+
+
+
+
+document.querySelector('#cargarFoto').addEventListener("change", function(){
+  const reader = new FileReader();
+  reader.addEventListener("load", () => { 
+  localStorage.setItem('foto', reader.result); 
+  });
+  reader.readAsDataURL(this.files[0]);
+  });
+  
+
+
+
 
 
 //la función de acceder al perfil hace varias cosas:
@@ -123,12 +139,22 @@ let htmlContentToAppend = "";
       })
   } else {
       document.getElementById('alertaPerfil').classList.add('show');
-  }}
+  }
+
+  const dataFoto = localStorage.getItem('foto');
+  if (dataFoto){
+    document.querySelector('#foto').setAttribute('scr', dataFoto)
+  }
+  
+
+
+}
 
 
 
 //finalmente llamamos a la función accederPerfil
 accederPerfil();
+
 
 
 

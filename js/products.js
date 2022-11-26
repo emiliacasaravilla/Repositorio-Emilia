@@ -11,6 +11,9 @@ const ordenarPorPrecioDesc = "precioAs";
 const ordenarPorPrecioAsc = "precioDes";
 const ordenarPorRelevanciaDesc = "Relev";
 
+let productosEncontrados=[];
+let search = undefined;
+
 //declaré las variables: arrays de productos (la original y la qye se va a ir actualizando al hacer el sort) 
 //y por otrolado las que me van ayudar a setear el criterio para el sort
 
@@ -73,7 +76,7 @@ function mostrarProductos(){
    for (let productos of arrayProductos){
 
     if ((precioMin== undefined && precioMax == undefined) || (parseInt(productos.cost)>=precioMin && parseInt(productos.cost)<=precioMax) || (parseInt(productos.cost) >= precioMin && precioMax==undefined) || (parseInt(productos.cost) <= precioMax && precioMin== undefined)){
-
+     //  if (search == undefined || search == "" || productos.titulo.toLowerCase().indexOf(search.toLowerCase()) > -1) {
 //Entrega 3
 //aca ejecuto la funcion de redireccionamiento, con el evento onclick 
         htmlContentToAppend += `
@@ -120,25 +123,29 @@ function sortYMostrarProductos(sortCriterio, arrayProductos){
 //Y luego ejecuta la función de mostrar productos
 
 //HAY QUE ARREGLAR ESTO, NO FUNCIONA, DESAFIO 2
-function buscarProductos(){
-    let productosEncontrados= undefined;
-    for (let productos of arrayProductos){
+//function buscarProductos(){
+    
+   // for (let productos of arrayProductos){
 
-        if(productos.title.toLowerCase().indexOf(contenidoBuscador.toLowerCase()) > -1){
+   //    if(productos.title.toLowerCase().indexOf(contenidoBuscador.toLowerCase()) > -1){
             productosEncontrados.push(productos)
-        }
-
-        arrayProductos = productosEncontrados;
-        mostrarProductos();
-        console.log(productosEncontrados)
-}}
-
-document.getElementById("btnBuscar").addEventListener('click', function () {
-
-    buscarProductos()
+    //      
+   //     }
+ //
+    //    arrayProductos = productosEncontrados;
+    //   mostrarProductos();
+//        console.log(productosEncontrados)
+//}}
 
 
-});
+
+//document.getElementById("btnBuscar").addEventListener('click', function () {
+ //  buscarProductos()
+//console.log(productosEncontrados)
+//});
+
+
+
     
 
 document.addEventListener("DOMContentLoaded", function(e){
@@ -215,5 +222,11 @@ document.getElementById("sortByCount").addEventListener("click", function(){
 //Cada uno de los tres botones que sirven para ordenar, con una escucha de evento, ejecutan la función
 //declarada más arriba que ordena y muestra los productos.
 
-});
+document.getElementById("inputBuscar").addEventListener("input", function () {
+                search = document.getElementById("inputBuscar").value;
+                mostrarProductos();
+            })
+            //ESTO DE AC[A ARRIBA SERIA PAAR EL BUSCADOR, QUE NO ANDAs]
 
+})
+//};
